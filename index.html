@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+**Cập nhật**:
+- Thêm nội dung giới thiệu cho "Thẻ Platinum", "Thẻ Vàng", "Ưu Đãi Mùa Lễ", "Giới Thiệu Bạn Bè", "Lịch Sử", "Sứ Mệnh" trong các mục tương ứng.
+- Chèn link Facebook và Messenger vào mục "Liên Hệ" với URL: `https://facebook.com/shinhanfinancer`.
+
+```html<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -63,7 +67,7 @@
                         <p class="text-lg text-white mb-6">Duyệt nhanh trong 60 giây, hỗ trợ nợ xấu, lãi suất từ 6.5%.</p>
                         <button onclick="document.querySelector('#register-form').scrollIntoView({behavior: 'smooth'})" class="bg-blue-900 text-white px-6 py-3 rounded-md hover:bg-blue-800">Đăng ký ngay</button>
                     </div>
-                    <img src="https://imgur.com/FlO8y6b.jpg" alt="Vay nhanh" class="w-full md:w-1/3 rounded-lg" loading="lazy">
+                    <img src="https://imgur.com/FlO8y6b.jpg" alt="Vay nhanh" class="w-full md:w-1/2 rounded-lg" loading="lazy">
                 </div>
             </section>
         </div>
@@ -77,25 +81,81 @@
         <!-- Cards -->
         <div id="cards-content" class="content-section container mx-auto max-w-6xl py-8">
             <h2 class="text-2xl font-bold text-blue-900 text-center mb-8">Thẻ Tín Dụng</h2>
-            <p class="text-gray-700">Thẻ tín dụng Shinhan với ưu đãi hoàn tiền, thanh toán không lãi suất lên đến 45 ngày.</p>
+            <p class="text-gray-700 mb-4">Thẻ tín dụng Shinhan với ưu đãi hoàn tiền, thanh toán không lãi suất lên đến 45 ngày.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-bold text-blue-900 mb-2">Thẻ Platinum</h3>
+                    <p class="text-gray-600 mb-2">Hoàn tiền 5% khi mua sắm, hạn mức tín dụng lên đến 500 triệu VNĐ.</p>
+                    <p class="text-gray-600">Miễn phí thường niên năm đầu, tích điểm đổi quà tại các đối tác lớn.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-bold text-blue-900 mb-2">Thẻ Vàng</h3>
+                    <p class="text-gray-600 mb-2">Ưu đãi giảm giá 10% tại các đối tác, lãi suất 0% trong 45 ngày.</p>
+                    <p class="text-gray-600">Hỗ trợ thanh toán quốc tế, bảo hiểm du lịch toàn cầu miễn phí.</p>
+                </div>
+            </div>
         </div>
 
         <!-- Promotions -->
         <div id="promotions-content" class="content-section container mx-auto max-w-6xl py-8">
             <h2 class="text-2xl font-bold text-blue-900 text-center mb-8">Khuyến Mãi</h2>
-            <p class="text-gray-700">Nhận ưu đãi đặc biệt khi đăng ký vay trong tháng này: giảm 1% lãi suất.</p>
+            <p class="text-gray-700 mb-4">Nhận ưu đãi đặc biệt khi đăng ký vay trong tháng này: giảm 1% lãi suất.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-bold text-blue-900 mb-2">Ưu Đãi Mùa Lễ</h3>
+                    <p class="text-gray-600 mb-2">Miễn phí phát hành thẻ tín dụng khi đăng ký trước 31/12/2025.</p>
+                    <p class="text-gray-600">Tặng thêm voucher 1 triệu VNĐ khi chi tiêu trên 10 triệu VNĐ.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-bold text-blue-900 mb-2">Giới Thiệu Bạn Bè</h3>
+                    <p class="text-gray-600 mb-2">Nhận 500,000 VNĐ khi giới thiệu bạn bè đăng ký vay thành công.</p>
+                    <p class="text-gray-600">Bạn bè được giảm 0.5% lãi suất cho khoản vay đầu tiên.</p>
+                </div>
+            </div>
         </div>
 
         <!-- About -->
         <div id="about-content" class="content-section container mx-auto max-w-6xl py-8">
             <h2 class="text-2xl font-bold text-blue-900 text-center mb-8">Giới Thiệu</h2>
-            <p class="text-gray-700">Shinhan Finance là công ty tài chính hàng đầu, cung cấp giải pháp tài chính minh bạch, an toàn.</p>
+            <p class="text-gray-700 mb-4">Shinhan Finance là công ty tài chính hàng đầu, cung cấp giải pháp tài chính minh bạch, an toàn.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-bold text-blue-900 mb-2">Lịch Sử</h3>
+                    <p class="text-gray-600 mb-2">Thành lập năm 2010, Shinhan Finance đã phục vụ hơn 1 triệu khách hàng tại Việt Nam.</p>
+                    <p class="text-gray-600">Đạt nhiều giải thưởng uy tín về dịch vụ tài chính.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-bold text-blue-900 mb-2">Sứ Mệnh</h3>
+                    <p class="text-gray-600 mb-2">Mang đến giải pháp tài chính bền vững, hỗ trợ khách hàng đạt được mục tiêu tài chính.</p>
+                    <p class="text-gray-600">Cam kết minh bạch, lấy khách hàng làm trung tâm.</p>
+                </div>
+            </div>
         </div>
 
         <!-- Contact -->
         <div id="contact-content" class="content-section container mx-auto max-w-6xl py-8">
             <h2 class="text-2xl font-bold text-blue-900 text-center mb-8">Liên Hệ</h2>
-            <p class="text-gray-700">Email: support@shinhanfinance.com.vn | Hotline: 1900 1577</p>
+            <p class="text-gray-700 mb-4">Email: support@shinhanfinance.com.vn | Hotline: 1900 1577</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-bold text-blue-900 mb-2">Chi Nhánh TP.HCM</h3>
+                    <p class="text-gray-600">123 Đường Lê Lợi, Quận 1, TP.HCM.</p>
+                    <p class="text-gray-600">Giờ làm việc: 8:00 - 17:00 (Thứ 2 - Thứ 6).</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-bold text-blue-900 mb-2">Chi Nhánh Hà Nội</h3>
+                    <p class="text-gray-600">456 Phố Huế, Hai Bà Trưng, Hà Nội.</p>
+                    <p class="text-gray-600">Giờ làm việc: 8:00 - 17:00 (Thứ 2 - Thứ 6).</p>
+                </div>
+            </div>
+            <div class="flex justify-center space-x-4 mt-6">
+                <a href="https://facebook.com/shinhanfinancer" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-blue-900 hover:bg-gray-200" aria-label="Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.563V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                </a>
+                <a href="https://facebook.com/shinhanfinancer" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-blue-900 hover:bg-gray-200" aria-label="Messenger">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 2.118.664 4.086 1.789 5.698l-1.54 5.698 5.698-1.54A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm-1.29 15.293l-2.586-2.586-4.293 2.586 4.793-5.086 2.586 2.586 4.293-2.586-4.793 5.086z"/></svg>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -312,7 +372,7 @@
                 });
 
                 document.getElementById(targetId).classList.add('active');
-                document.querySelector('.menu-items').classList.remove('active'); // Close mobile menu
+                document.querySelector('.menu-items').classList.remove('active');
             });
         });
 
@@ -449,4 +509,4 @@
         }, 5000);
     </script>
 </body>
-</html>
+</html>```
