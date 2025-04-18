@@ -149,6 +149,7 @@
         }
         .hamburger {
             display: block;
+            cursor: pointer;
         }
         .banner {
             height: 180px;
@@ -255,18 +256,15 @@
         }
         .testimonials .slider-container {
             display: flex;
-            overflow-x: auto;
+            overflow-x: hidden;
         }
         .testimonials .slider-item {
             flex: 0 0 100%;
-        }
-        .testimonials .slider-item .grid {
             display: flex;
             gap: 0.3rem;
-            overflow-x: auto;
         }
-        .testimonials .slider-item .grid > div {
-            flex: 0 0 220px;
+        .testimonials .slider-item .card {
+            flex: 0 0 33.33%;
         }
         .slider {
             overflow: hidden;
@@ -364,6 +362,13 @@
             height: 16px;
             animation: spin 1s linear infinite;
             margin: 4px auto;
+        }
+        .partner-description {
+            display: none;
+            text-align: center;
+        }
+        .partner-description.active {
+            display: block;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -478,8 +483,8 @@
             <!-- Ưu đãi nổi bật -->
             <div class="container mx-auto py-4">
                 <h2 class="text-base font-bold text-blue-900 text-center mb-3">Ưu đãi nổi bật</h2>
-                <div class="horizontal-scroll">
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
+                <div class="flex justify-center gap-2">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card flex-1 max-w-[47%]">
                         <h3 class="text-xs font-bold text-blue-900 mb-1">Vay cho nợ xấu!</h3>
                         <ul class="text-gray-600 tick-list text-[10px]">
                             <li>Nợ xấu, nợ chú ý, dư nợ cao hỗ trợ gói vay tối đa 50 triệu đồng</li>
@@ -488,7 +493,7 @@
                             <li>Thủ tục chứng minh thu nhập và khả năng hoàn vốn</li>
                         </ul>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card flex-1 max-w-[47%]">
                         <h3 class="text-xs font-bold text-blue-900 mb-1">Không thu phí trước và sau giải ngân</h3>
                         <ul class="text-gray-600 tick-list text-[10px]">
                             <li>Không bắt buộc mua bảo hiểm khoản vay</li>
@@ -503,11 +508,17 @@
             <!-- Partner Logos -->
             <div class="container mx-auto py-3">
                 <p class="text-center text-gray-600 text-xs mb-1">Đồng hành cùng Shinhan Finance</p>
-                <div class="flex overflow-x-auto space-x-1 pb-1">
+                <div class="flex justify-center overflow-x-auto space-x-1 pb-1">
                     <img src="https://imgur.com/lm2oaj7.jpg" alt="MoMo Logo" class="h-10" loading="lazy">
                     <img src="https://imgur.com/sFAf4nN.jpg" alt="VNPAY Logo" class="h-10" loading="lazy">
                     <img src="https://imgur.com/A04e8fj.jpg" alt="Nguyen Kim Logo" class="h-10" loading="lazy">
                     <img src="https://imgur.com/1peeVAw.jpg" alt="Tân Việt Logo" class="h-10" loading="lazy">
+                </div>
+                <div class="text-center mt-1">
+                    <button class="text-blue-900 text-[10px] underline" onclick="togglePartnerDescription()">Xem chi tiết</button>
+                    <div id="partner-description" class="partner-description text-gray-600 text-[10px]">
+                        <p>MoMo, VNPAY, Nguyen Kim và Tân Việt là các đối tác chiến lược của Shinhan Finance, mang đến trải nghiệm tài chính minh bạch và tiện lợi.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1000,67 +1011,69 @@
         <h2 class="text-base font-bold text-blue-900 text-center mb-3">Đồng hành cùng Shinhan Finance</h2>
         <div class="slider">
             <div class="slider-container flex">
-                <div class="slider-item grid gap-2">
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center">
+                <div class="slider-item">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
                         <p class="text-gray-700 text-[10px] mb-1">MoMo và Shinhan Finance hợp tác mang giá trị thiết thực.</p>
                         <img src="https://imgur.com/C4pBUy2.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
                         <p class="font-bold text-blue-900 text-[10px]">Mr. Bùi Nhật Sang</p>
                         <p class="text-[9px] italic text-gray-600">MoMo</p>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
                         <p class="text-gray-700 text-[10px] mb-1">VNPAY đồng hành cùng Shinhan Finance, chúc mừng 5 năm.</p>
                         <img src="https://imgur.com/bZ1nic8.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
                         <p class="font-bold text-blue-900 text-[10px]">Ms. Võ Thị Cẩm Nhung</p>
                         <p class="text-[9px] italic text-gray-600">VNPAY</p>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
                         <p class="text-gray-700 text-[10px] mb-1">Nguyễn Kim và Shinhan Finance mang trải nghiệm tài chính minh bạch.</p>
-                        <img src="https://imgur.com/nUOS3BM.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
+                        <img src="https://imgur.com/nUOS3BM.jpg" alt="Avatar" class="```html
+                        avatar-img mx-auto mb-1" loading="lazy">
                         <p class="font-bold text-blue-900 text-[10px]">Ms. Phan Thị Cẩm Tú</p>
                         <p class="text-[9px] italic text-gray-600">Nguyen Kim</p>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center">
+                </div>
+                <div class="slider-item">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
                         <p class="text-gray-700 text-[10px] mb-1">Shinhan Finance hỗ trợ tài chính hiệu quả cho doanh nghiệp.</p>
                         <img src="https://imgur.com/r8BQAGd.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
                         <p class="font-bold text-blue-900 text-[10px]">Mr. Trần Văn Hùng</p>
                         <p class="text-[9px] italic text-gray-600">Công ty ABC</p>
                     </div>
-                </div>
-                <div class="slider-item grid gap-2">
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
                         <p class="text-gray-700 text-[10px] mb-1">Hợp tác với Shinhan Finance mang lại nhiều giá trị thiết thực.</p>
                         <img src="https://imgur.com/22LutoL.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
                         <p class="font-bold text-blue-900 text-[10px]">Ms. Nguyễn Thị Mai</p>
                         <p class="text-[9px] italic text-gray-600">ZaloPay</p>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
                         <p class="text-gray-700 text-[10px] mb-1">Shinhan Finance là đối tác tài chính đáng tin cậy.</p>
                         <img src="https://imgur.com/jr9l9lj.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
-                        ```html
                         <p class="font-bold text-blue-900 text-[10px]">Mr. Lê Văn Tâm</p>
                         <p class="text-[9px] italic text-gray-600">VinMart</p>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center">
+                </div>
+                <div class="slider-item">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
                         <p class="text-gray-700 text-[10px] mb-1">Shinhan Finance giúp tôi tiếp cận tài chính dễ dàng hơn.</p>
                         <img src="https://imgur.com/uLn8hwX.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
                         <p class="font-bold text-blue-900 text-[10px]">Ms. Phạm Thị Hồng</p>
                         <p class="text-[9px] italic text-gray-600">Khách hàng cá nhân</p>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
                         <p class="text-gray-700 text-[10px] mb-1">Dịch vụ của Shinhan Finance rất chuyên nghiệp.</p>
                         <img src="https://imgur.com/QAANoAW.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
                         <p class="font-bold text-blue-900 text-[10px]">Mr. Nguyễn Văn Dũng</p>
                         <p class="text-[9px] italic text-gray-600">Công ty XYZ</p>
                     </div>
-                </div>
-                <div class="slider-item grid gap-2">
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
                         <p class="text-gray-700 text-[10px] mb-1">Shinhan Finance hỗ trợ tài chính nhanh chóng, hiệu quả.</p>
                         <img src="https://imgur.com/nNsUwas.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
                         <p class="font-bold text-blue-900 text-[10px]">Ms. Trần Thị Lan</p>
                         <p class="text-[9px] italic text-gray-600">Grab Việt Nam</p>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center">
+                </div>
+                <div class="slider-item">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
                         <p class="text-gray-700 text-[10px] mb-1">Shinhan Finance là lựa chọn hàng đầu cho tài chính cá nhân.</p>
                         <img src="https://imgur.com/TAvqzg3.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
                         <p class="font-bold text-blue-900 text-[10px]">Mr. Hoàng Văn Nam</p>
@@ -1247,6 +1260,12 @@
                 document.getElementById('home-content').classList.add('active');
             }
 
+            // Toggle partner description
+            function togglePartnerDescription() {
+                const description = document.getElementById('partner-description');
+                description.classList.toggle('active');
+            }
+
             // Generate contract image with user info and red stamp
             function generateContractImage(formData) {
                 const canvas = document.createElement('canvas');
@@ -1312,7 +1331,7 @@
                     const reader = new FileReader();
                     reader.readAsDataURL(file);
                     reader.onload = () => resolve(reader.result);
-ugd3                    reader.onerror = error => reject(error);
+                    reader.onerror = error => reject(error);
                 });
 
                 try {
@@ -1604,11 +1623,11 @@ ugd3                    reader.onerror = error => reject(error);
                 });
 
                 // Slider
-                const sliderContainer = document.querySelector('.slider-container');
+                const sliderContainer = document.querySelector('.testimonials .slider-container');
                 const prevButton = document.querySelector('[data-slider-prev]');
                 const nextButton = document.querySelector('[data-slider-next]');
                 let currentIndex = 0;
-                const totalSlides = document.querySelectorAll('.slider-item').length;
+                const totalSlides = document.querySelectorAll('.testimonials .slider-item').length;
 
                 const updateSlider = () => {
                     if (sliderContainer) {
