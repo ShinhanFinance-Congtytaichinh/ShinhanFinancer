@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -1026,10 +1027,18 @@
                     </div>
                     <div class="bg-white p-2 rounded-lg shadow-md text-center card">
                         <p class="text-gray-700 text-[10px] mb-1">Nguyễn Kim và Shinhan Finance mang trải nghiệm tài chính minh bạch.</p>
-                        <img src="https://imgur.com/nUOS3BM.jpg" alt="Avatar" class="```html
-                        avatar-img mx-auto mb-1" loading="lazy">
+                        <img src="https://imgur.com/nUOS3BM.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
                         <p class="font-bold text-blue-900 text-[10px]">Ms. Phan Thị Cẩm Tú</p>
                         <p class="text-[9px] italic text-gray-600">Nguyen Kim</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
+                        <p class="text-gray-700 text-[10px] mb-1">Shinhan Finance hỗ trợ tài chính hiệu quả cho doanh nghiệp.</p>
+                        <img src="https://imgur.com/r8BQAGd.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
+                        <p class="font-bold text-blue-900 text-[10px]">Mr. Trần Văn Hùng</p>
+                        <p class="```html
+text-[9px] italic text-gray-600">Nguyen Kim</p>
                     </div>
                 </div>
                 <div class="slider-item">
@@ -1234,36 +1243,58 @@
             // Show register form
             function showRegisterForm() {
                 const registerForm = document.getElementById('register-form');
-                const sections = document.querySelectorAll('.content-section');
                 const loanCalculatorModal = document.getElementById('loan-calculator-modal');
-                sections.forEach(section => section.classList.remove('active'));
-                loanCalculatorModal.classList.add('hidden');
-                registerForm.classList.remove('hidden');
-                registerForm.scrollIntoView({ behavior: 'smooth' });
+                const sections = document.querySelectorAll('.content-section');
+                const uploadPhotoModal = document.getElementById('upload-photo-modal');
+
+                if (registerForm && loanCalculatorModal && uploadPhotoModal) {
+                    sections.forEach(section => section.classList.remove('active'));
+                    loanCalculatorModal.classList.add('hidden');
+                    uploadPhotoModal.classList.remove('active');
+                    registerForm.classList.remove('hidden');
+                    registerForm.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    console.error('One or more elements not found: register-form, loan-calculator-modal, or upload-photo-modal');
+                }
             }
 
             // Show loan calculator modal
             function showLoanCalculator() {
                 const calculatorModal = document.getElementById('loan-calculator-modal');
-                const sections = document.querySelectorAll('.content-section');
                 const registerForm = document.getElementById('register-form');
-                sections.forEach(section => section.classList.remove('active'));
-                registerForm.classList.add('hidden');
-                calculatorModal.classList.remove('hidden');
-                calculatorModal.scrollIntoView({ behavior: 'smooth' });
+                const sections = document.querySelectorAll('.content-section');
+                const uploadPhotoModal = document.getElementById('upload-photo-modal');
+
+                if (calculatorModal && registerForm && uploadPhotoModal) {
+                    sections.forEach(section => section.classList.remove('active'));
+                    registerForm.classList.add('hidden');
+                    uploadPhotoModal.classList.remove('active');
+                    calculatorModal.classList.remove('hidden');
+                    calculatorModal.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    console.error('One or more elements not found: loan-calculator-modal, register-form, or upload-photo-modal');
+                }
             }
 
             // Close loan calculator modal
             function closeLoanCalculator() {
                 const calculatorModal = document.getElementById('loan-calculator-modal');
-                calculatorModal.classList.add('hidden');
-                document.getElementById('home-content').classList.add('active');
+                if (calculatorModal) {
+                    calculatorModal.classList.add('hidden');
+                    document.getElementById('home-content').classList.add('active');
+                } else {
+                    console.error('Element not found: loan-calculator-modal');
+                }
             }
 
             // Toggle partner description
             function togglePartnerDescription() {
                 const description = document.getElementById('partner-description');
-                description.classList.toggle('active');
+                if (description) {
+                    description.classList.toggle('active');
+                } else {
+                    console.error('Element not found: partner-description');
+                }
             }
 
             // Generate contract image with user info and red stamp
