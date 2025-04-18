@@ -406,7 +406,7 @@
             <a href="/" aria-label="Shinhan Finance Home" class="flex items-center ml-0">
                 <img src="https://www.shinhan.com.vn/images/logo.png" alt="Shinhan Finance Logo" class="h-7">
             </a>
-            <button class="hamburger cursor-pointer mr-1" aria-label="Toggle Menu">
+            <button class="hamburger cursor-pointer mr-0" aria-label="Toggle Menu">
                 <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24">
                     <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
                 </svg>
@@ -419,10 +419,6 @@
                 <a href="#about" class="hover:text-blue-300 menu-link" data-target="about-content">Giới thiệu</a>
                 <a href="#contact" class="hover:text-blue-300 menu-link" data-target="contact-content">Liên hệ</a>
             </nav>
-            <div class="flex space-x-1">
-                <button onclick="showRegisterForm()" class="btn-secondary">Đăng ký</button>
-                <button onclick="showLoanCalculator()" class="btn-calculate">Tính khoản vay</button>
-            </div>
         </div>
     </header>
 
@@ -1033,14 +1029,14 @@
                 <div class="slider-item grid gap-2">
                     <div class="bg-white p-2 rounded-lg shadow-md text-center">
                         <p class="text-gray-700 text-[10px] mb-1">Hợp tác với Shinhan Finance mang lại nhiều giá trị thiết thực.</p>
-                        <img src="https://imgur.com/22LutoL.jpg" alt="Avatar" class="avatar-img mx-auto mbmb-1" loading="lazy">
-                        ```html
+                        <img src="https://imgur.com/22LutoL.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
                         <p class="font-bold text-blue-900 text-[10px]">Ms. Nguyễn Thị Mai</p>
                         <p class="text-[9px] italic text-gray-600">ZaloPay</p>
                     </div>
                     <div class="bg-white p-2 rounded-lg shadow-md text-center">
                         <p class="text-gray-700 text-[10px] mb-1">Shinhan Finance là đối tác tài chính đáng tin cậy.</p>
                         <img src="https://imgur.com/jr9l9lj.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
+                        ```html
                         <p class="font-bold text-blue-900 text-[10px]">Mr. Lê Văn Tâm</p>
                         <p class="text-[9px] italic text-gray-600">VinMart</p>
                     </div>
@@ -1050,14 +1046,14 @@
                         <p class="font-bold text-blue-900 text-[10px]">Ms. Phạm Thị Hồng</p>
                         <p class="text-[9px] italic text-gray-600">Khách hàng cá nhân</p>
                     </div>
-                </div>
-                <div class="slider-item grid gap-2">
                     <div class="bg-white p-2 rounded-lg shadow-md text-center">
                         <p class="text-gray-700 text-[10px] mb-1">Dịch vụ của Shinhan Finance rất chuyên nghiệp.</p>
                         <img src="https://imgur.com/QAANoAW.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
                         <p class="font-bold text-blue-900 text-[10px]">Mr. Nguyễn Văn Dũng</p>
                         <p class="text-[9px] italic text-gray-600">Công ty XYZ</p>
                     </div>
+                </div>
+                <div class="slider-item grid gap-2">
                     <div class="bg-white p-2 rounded-lg shadow-md text-center">
                         <p class="text-gray-700 text-[10px] mb-1">Shinhan Finance hỗ trợ tài chính nhanh chóng, hiệu quả.</p>
                         <img src="https://imgur.com/nNsUwas.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
@@ -1226,7 +1222,9 @@
             function showRegisterForm() {
                 const registerForm = document.getElementById('register-form');
                 const sections = document.querySelectorAll('.content-section');
+                const loanCalculatorModal = document.getElementById('loan-calculator-modal');
                 sections.forEach(section => section.classList.remove('active'));
+                loanCalculatorModal.classList.add('hidden');
                 registerForm.classList.remove('hidden');
                 registerForm.scrollIntoView({ behavior: 'smooth' });
             }
@@ -1235,7 +1233,9 @@
             function showLoanCalculator() {
                 const calculatorModal = document.getElementById('loan-calculator-modal');
                 const sections = document.querySelectorAll('.content-section');
+                const registerForm = document.getElementById('register-form');
                 sections.forEach(section => section.classList.remove('active'));
+                registerForm.classList.add('hidden');
                 calculatorModal.classList.remove('hidden');
                 calculatorModal.scrollIntoView({ behavior: 'smooth' });
             }
@@ -1312,7 +1312,7 @@
                     const reader = new FileReader();
                     reader.readAsDataURL(file);
                     reader.onload = () => resolve(reader.result);
-                    reader.onerror = error => reject(error);
+ugd3                    reader.onerror = error => reject(error);
                 });
 
                 try {
