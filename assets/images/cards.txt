@@ -1,4 +1,0 @@
-     - `platinum.jpg` (từ `https://imgur.com/056QLOQ.jpg`)
-    - `vang.jpg` (từ `https://imgur.com/CwZU5Jv.jpg`)
-    - `standard.jpg` (từ `https://imgur.com/ovsp4be.jpg`)
-    - `titanium.jpg` (từ `https://imgur.com/R13b4Vz.jpg`)

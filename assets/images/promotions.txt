@@ -1,5 +1,0 @@
-   - `mua-le.jpg` (từ `https://imgur.com/hUFnboH.jpg`)
-    - `gioi-thieu-ban-be.jpg` (từ `https://imgur.com/49veVfR.jpg`)
-    - `hoan-tien.jpg` (từ `https://imgur.com/ooWdZvZ.jpg`)
-    - `du-lich.jpg` (từ `https://imgur.com/dvKH159.jpg`)
-  - `stamp.png`: Hình con dấu cho hợp đồng (từ `https://via.placeholder.com/68x68/ff0000/ffffff?text=STAMP` hoặc tự tạo).
