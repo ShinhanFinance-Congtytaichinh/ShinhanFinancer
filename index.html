@@ -39,25 +39,31 @@
     <!-- Messenger Widget -->
     <div class="messenger-widget">
         <a href="https://m.me/shinhanfinancevn" class="btn-messenger" aria-label="Chat qua Messenger">
-            <img src="assets/icons/messenger.png" alt="Messenger" class="w-4 h-4">
+            <img src="assets/icons/messenger.png" alt="Messenger Icon" class="w-4 h-4">
         </a>
     </div>
     <!-- Facebook Customer Chat -->
     <div id="fb-root"></div>
     <div id="fb-customer-chat" class="fb-customerchat" page_id="YOUR_PAGE_ID" theme_color="#FFD700"></div>
+    <!-- Note: Replace YOUR_PAGE_ID with the actual Facebook Page ID of Shinhan Finance VN -->
 
     <!-- Menu -->
     <header class="bg-blue-900 text-white py-4 shadow-md">
         <div class="container mx-auto flex items-center justify-between px-4">
             <a href="/" aria-label="Shinhan Finance Home" class="flex items-center ml-2">
-                <img src="assets/images/logo.png" alt="Shinhan Finance" class="h-8 logo header-logo">
+                <img src="assets/images/logo.png" alt="Shinhan Finance Logo" class="h-8 logo header-logo">
             </a>
             <button class="hamburger cursor-pointer mr-2" aria-label="Toggle Menu" aria-expanded="false">
                 <svg class="w-6 h-6" fill="white" viewBox="0 0 24 24">
                     <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
                 </svg>
             </button>
-            <nav class="menu-items hidden flex-col space-y-2 text-sm bg-blue-900 absolute top-16 left-0 w-full p-4">
+            <nav class="menu-items hidden flex-col space-y-2 text-sm bg-blue-900 absolute top-16 left-0 w-full p-4 z-10">
+                <button class="close-menu text-right text-white mb-2" aria-label="Close Menu">
+                    <svg class="w-6 h-6" fill="white" viewBox="0 0 24 24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                </button>
                 <a href="#home" class="hover:text-blue-300 menu-link" data-target="home-content">Trang chủ</a>
                 <a href="#loans" class="hover:text-blue-300 menu-link" data-target="loans-content">Vay tiêu dùng</a>
                 <a href="#cards" class="hover:text-blue-300 menu-link" data-target="cards-content">Thẻ tín dụng</a>
@@ -74,12 +80,12 @@
         <!-- Home -->
         <div id="home-content" class="content-section active">
             <!-- Hero -->
-            <section class="banner h-[180px] bg-cover bg-center">
-                <img src="assets/images/banner.jpg" alt="Vay nhanh" class="w-full h-full">
-                <div class="banner-content">
+            <section class="banner h-[180px] bg-cover bg-center relative">
+                <img src="assets/images/banner.jpg" alt="Vay nhanh - Shinhan Finance Banner" class="w-full h-full object-cover">
+                <div class="banner-content absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50">
                     <h1 class="text-sm">Vay dễ dàng, lãi nhẹ nhàng</h1>
                     <p class="text-xs">Duyệt nhanh trong 60 giây, hỗ trợ nợ xấu, lãi suất từ 5.89%.</p>
-                    <button class="btn-secondary register-now-btn" aria-label="Đăng ký vay">Đăng ký ngay</button>
+                    <button class="btn-secondary register-now-btn mt-2" aria-label="Đăng ký vay">Đăng ký ngay</button>
                 </div>
             </section>
 
@@ -94,8 +100,8 @@
             <!-- Highlights -->
             <div class="container mx-auto py-4">
                 <h2 class="text-base font-bold text-blue-900 text-center mb-3">Tại sao chọn Shinhan Finance?</h2>
-                <div class="horizontal-scroll">
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
+                <div class="horizontal-scroll flex space-x-3 overflow-x-auto">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card min-w-[200px]">
                         <h3 class="text-xs font-bold text-blue-900 mb-1">Duyệt nhanh 60 giây</h3>
                         <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                             <li>Hồ sơ được xử lý nhanh chóng, nhận kết quả chỉ trong 15 phút</li>
@@ -103,7 +109,7 @@
                             <li>Lãi suất tối thiểu từ 18%/năm tính trên dư nợ giảm dần</li>
                         </ul>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card min-w-[200px]">
                         <h3 class="text-xs font-bold text-blue-900 mb-1">Lãi suất từ 5.89%</h3>
                         <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                             <li>Lãi suất cạnh tranh, phù hợp với mọi nhu cầu tài chính</li>
@@ -111,7 +117,7 @@
                             <li>Giảm ngay lãi suất cho khách hàng là sinh viên</li>
                         </ul>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card min-w-[200px]">
                         <h3 class="text-xs font-bold text-blue-900 mb-1">Hỗ trợ nợ xấu</h3>
                         <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                             <li>Hỗ trợ khách hàng có lịch sử tín dụng không hoàn hảo</li>
@@ -150,11 +156,11 @@
             <!-- Partner Logos -->
             <div class="container mx-auto py-4">
                 <p class="text-center text-gray-600 text-xs sm:text-sm mb-2">Đồng hành cùng Shinhan Finance</p>
-                <div class="flex justify-center overflow-x-auto space-x-2 pb-2">
-                    <img src="assets/images/partners/momo.jpg" alt="MoMo Logo" class="h-12 partner-logo" data-partner="momo" loading="lazy">
-                    <img src="assets/images/partners/vnpay.jpg" alt="VNPAY Logo" class="h-12 partner-logo" data-partner="vnpay" loading="lazy">
-                    <img src="assets/images/partners/nguyenkim.jpg" alt="Nguyen Kim Logo" class="h-12 partner-logo" data-partner="nguyenkim" loading="lazy">
-                    <img src="assets/images/partners/tanviet.jpg" alt="Tân Việt Logo" class="h-12 partner-logo" data-partner="tanviet" loading="lazy">
+                <div class="flex justify-center overflow-x-auto space-x-3 pb-2">
+                    <img src="assets/images/partners/momo.jpg" alt="MoMo Logo" class="h-12 partner-logo" data-partner="momo">
+                    <img src="assets/images/partners/vnpay.jpg" alt="VNPAY Logo" class="h-12 partner-logo" data-partner="vnpay">
+                    <img src="assets/images/partners/nguyenkim.jpg" alt="Nguyen Kim Logo" class="h-12 partner-logo" data-partner="nguyenkim">
+                    <img src="assets/images/partners/tanviet.jpg" alt="Tân Việt Logo" class="h-12 partner-logo" data-partner="tanviet">
                 </div>
                 <div class="text-center mt-2">
                     <div id="partner-details" class="partner-details text-gray-600 text-[10px] sm:text-sm">
@@ -171,9 +177,9 @@
         <div id="loans-content" class="content-section container mx-auto py-4">
             <h2 class="text-base font-bold text-blue-900 text-center mb-3">Vay Tiêu Dùng</h2>
             <p class="text-gray-700 text-center text-xs sm:text-sm mb-4">Chúng tôi cung cấp các gói vay tiêu dùng linh hoạt với lãi suất thấp, duyệt nhanh trong 60 giây.</p>
-            <div class="horizontal-scroll">
-                <div class="bg-white p-3 rounded-lg shadow-md card">
-                    <img src="assets/images/loans/vay-tin-chap.jpg" alt="Vay tín chấp" class="w-full h-28 object-cover rounded-t-lg mb-1" loading="lazy">
+            <div class="horizontal-scroll flex space-x-3 overflow-x-auto">
+                <div class="bg-white p-3 rounded-lg shadow-md card min-w-[250px]">
+                    <img src="assets/images/loans/vay-tin-chap.jpg" alt="Vay tín chấp - Shinhan Finance" class="w-full h-28 object-cover rounded-t-lg mb-1">
                     <h3 class="text-xs font-bold text-blue-900 mb-1">Vay Tín Chấp</h3>
                     <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                         <li><strong>Hạn mức:</strong> Lên đến 500 triệu VNĐ, không cần tài sản thế chấp</li>
@@ -182,8 +188,8 @@
                         <li><strong>Ưu điểm:</strong> Quy trình đơn giản, giải ngân nhanh trong 1 giờ</li>
                     </ul>
                 </div>
-                <div class="bg-white p-3 rounded-lg shadow-md card">
-                    <img src="assets/images/loans/vay-mua-xe.jpg" alt="Vay Mua Xe" class="w-full h-28 object-cover rounded-t-lg mb-1" loading="lazy">
+                <div class="bg-white p-3 rounded-lg shadow-md card min-w-[250px]">
+                    <img src="assets/images/loans/vay-mua-xe.jpg" alt="Vay Mua Xe - Shinhan Finance" class="w-full h-28 object-cover rounded-t-lg mb-1">
                     <h3 class="text-xs font-bold text-blue-900 mb-1">Vay Mua Xe</h3>
                     <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                         <li><strong>Hạn mức:</strong> Hỗ trợ vay đến 80% giá trị xe</li>
@@ -205,9 +211,9 @@
         <div id="cards-content" class="content-section container mx-auto py-4">
             <h2 class="text-base font-bold text-blue-900 text-center mb-3">Thẻ Tín Dụng</h2>
             <p class="text-gray-700 text-center text-xs sm:text-sm mb-4">Thẻ tín dụng Shinhan với ưu đãi hoàn tiền, thanh toán không lãi suất lên đến 45 ngày.</p>
-            <div class="horizontal-scroll">
-                <div class="bg-white p-3 rounded-lg shadow-md card">
-                    <img src="assets/images/cards/platinum.jpg" alt="Thẻ Platinum" class="w-14 mx-auto mb-1" loading="lazy">
+            <div class="horizontal-scroll flex space-x-3 overflow-x-auto">
+                <div class="bg-white p-3 rounded-lg shadow-md card min-w-[200px]">
+                    <img src="assets/images/cards/platinum.jpg" alt="Thẻ Platinum - Shinhan Finance" class="w-14 mx-auto mb-1">
                     <h3 class="text-xs font-bold text-blue-900 mb-1">Thẻ Platinum</h3>
                     <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                         <li><strong>Hoàn tiền:</strong> 5% khi mua sắm, hạn mức tín dụng lên đến 500 triệu VNĐ</li>
@@ -216,8 +222,8 @@
                         <li><strong>Bảo hiểm:</strong> Tai nạn du lịch lên đến 10 tỷ VNĐ</li>
                     </ul>
                 </div>
-                <div class="bg-white p-3 rounded-lg shadow-md card">
-                    <img src="assets/images/cards/vang.jpg" alt="Thẻ Vàng" class="w-14 mx-auto mb-1" loading="lazy">
+                <div class="bg-white p-3 rounded-lg shadow-md card min-w-[200px]">
+                    <img src="assets/images/cards/vang.jpg" alt="Thẻ Vàng - Shinhan Finance" class="w-14 mx-auto mb-1">
                     <h3 class="text-xs font-bold text-blue-900 mb-1">Thẻ Vàng</h3>
                     <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                         <li><strong>Ưu đãi:</strong> Giảm giá 10% tại các đối tác, lãi suất 0% trong 45 ngày</li>
@@ -226,8 +232,8 @@
                         <li><strong>Tích điểm:</strong> Đổi quà tại các siêu thị và cửa hàng tiện lợi</li>
                     </ul>
                 </div>
-                <div class="bg-white p-3 rounded-lg shadow-md card">
-                    <img src="assets/images/cards/standard.jpg" alt="Thẻ Standard" class="w-14 mx-auto mb-1" loading="lazy">
+                <div class="bg-white p-3 rounded-lg shadow-md card min-w-[200px]">
+                    <img src="assets/images/cards/standard.jpg" alt="Thẻ Standard - Shinhan Finance" class="w-14 mx-auto mb-1">
                     <h3 class="text-xs font-bold text-blue-900 mb-1">Thẻ Standard</h3>
                     <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                         <li><strong>Ưu đãi:</strong> Giảm giá 5% tại các đối tác</li>
@@ -236,8 +242,8 @@
                         <li><strong>Tích điểm:</strong> Đổi quà tại các cửa hàng tiện lợi</li>
                     </ul>
                 </div>
-                <div class="bg-white p-3 rounded-lg shadow-md card">
-                    <img src="assets/images/cards/titanium.jpg" alt="Thẻ Titanium" class="w-14 mx-auto mb-1" loading="lazy">
+                <div class="bg-white p-3 rounded-lg shadow-md card min-w-[200px]">
+                    <img src="assets/images/cards/titanium.jpg" alt="Thẻ Titanium - Shinhan Finance" class="w-14 mx-auto mb-1">
                     <h3 class="text-xs font-bold text-blue-900 mb-1">Thẻ Titanium</h3>
                     <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                         <li><strong>Hoàn tiền:</strong> 3% khi mua sắm, hạn mức tín dụng lên đến 300 triệu VNĐ</li>
@@ -261,8 +267,8 @@
             <p class="text-gray-700 text-center text-xs sm:text-sm mb-4">Nhận ưu đãi đặc biệt khi đăng ký vay trong tháng này: giảm 1% lãi suất.</p>
             <div class="promo-slider">
                 <div class="promo-slider-container flex">
-                    <div class="promo-slider-item bg-white p-3 rounded-lg shadow-md text-center">
-                        <img src="assets/images/promotions/mua-le.jpg" alt="Ưu Đãi Mùa Lễ" class="w-full h-20 sm:h-28 object-cover rounded-t-lg mb-1" loading="lazy">
+                    <div class="promo-slider-item bg-white p-3 rounded-lg shadow-md text-center min-w-[250px]">
+                        <img src="assets/images/promotions/mua-le.jpg" alt="Ưu Đãi Mùa Lễ - Shinhan Finance" class="w-full h-20 sm:h-28 object-cover rounded-t-lg mb-1">
                         <h3 class="text-xs font-bold text-blue-900 mb-1">Ưu Đãi Mùa Lễ</h3>
                         <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                             <li><strong>Thời gian:</strong> 01/12/2025 - 31/12/2025</li>
@@ -271,8 +277,8 @@
                             <li><strong>Áp dụng:</strong> Tất cả khách hàng mới và hiện tại</li>
                         </ul>
                     </div>
-                    <div class="promo-slider-item bg-white p-3 rounded-lg shadow-md text-center">
-                        <img src="assets/images/promotions/gioi-thieu-ban-be.jpg" alt="Giới Thiệu Bạn Bè" class="w-full h-20 sm:h-28 object-cover rounded-t-lg mb-1" loading="lazy">
+                    <div class="promo-slider-item bg-white p-3 rounded-lg shadow-md text-center min-w-[250px]">
+                        <img src="assets/images/promotions/gioi-thieu-ban-be.jpg" alt="Giới Thiệu Bạn Bè - Shinhan Finance" class="w-full h-20 sm:h-28 object-cover rounded-t-lg mb-1">
                         <h3 class="text-xs font-bold text-blue-900 mb-1">Giới Thiệu Bạn Bè</h3>
                         <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                             <li><strong>Thưởng:</strong> Nhận 500,000 VNĐ khi giới thiệu bạn bè</li>
@@ -281,8 +287,8 @@
                             <li><strong>Thời gian nhận thưởng:</strong> Chuyển trực tiếp vào tài khoản sau 7 ngày</li>
                         </ul>
                     </div>
-                    <div class="promo-slider-item bg-white p-3 rounded-lg shadow-md text-center">
-                        <img src="assets/images/promotions/hoan-tien.jpg" alt="Ưu Đãi Hoàn Tiền" class="w-full h-20 sm:h-28 object-cover rounded-t-lg mb-1" loading="lazy">
+                    <div class="promo-slider-item bg-white p-3 rounded-lg shadow-md text-center min-w-[250px]">
+                        <img src="assets/images/promotions/hoan-tien.jpg" alt="Ưu Đãi Hoàn Tiền - Shinhan Finance" class="w-full h-20 sm:h-28 object-cover rounded-t-lg mb-1">
                         <h3 class="text-xs font-bold text-blue-900 mb-1">Ưu Đãi Hoàn Tiền</h3>
                         <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                             <li><strong>Thời gian:</strong> 01/11/2025 - 30/11/2025</li>
@@ -291,8 +297,8 @@
                             <li><strong>Điều kiện:</strong> Chi tiêu tối thiểu 5 triệu VNĐ</li>
                         </ul>
                     </div>
-                    <div class="promo-slider-item bg-white p-3 rounded-lg shadow-md text-center">
-                        <img src="assets/images/promotions/du-lich.jpg" alt="Khuyến Mãi Du Lịch" class="w-full h-20 sm:h-28 object-cover rounded-t-lg mb-1" loading="lazy">
+                    <div class="promo-slider-item bg-white p-3 rounded-lg shadow-md text-center min-w-[250px]">
+                        <img src="assets/images/promotions/du-lich.jpg" alt="Khuyến Mãi Du Lịch - Shinhan Finance" class="w-full h-20 sm:h-28 object-cover rounded-t-lg mb-1">
                         <h3 class="text-xs font-bold text-blue-900 mb-1">Khuyến Mãi Du Lịch</h3>
                         <ul class="text-gray-600 tick-list text-[10px] sm:text-sm">
                             <li><strong>Thời gian:</strong> 01/12/2025 - 15/01/2026</li>
@@ -347,16 +353,16 @@
             </div>
             <div class="container mx-auto py-4">
                 <h2 class="text-base font-bold text-blue-900 text-center mb-3">Giá trị cốt lõi</h2>
-                <div class="horizontal-scroll">
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
+                <div class="horizontal-scroll flex space-x-3 overflow-x-auto">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card min-w-[200px]">
                         <h3 class="text-xs font-bold text-blue-900 mb-1">Minh bạch</h3>
                         <p class="text-gray-600 text-[10px] sm:text-sm">Cam kết cung cấp thông tin rõ ràng, minh bạch trong mọi giao dịch.</p>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card min-w-[200px]">
                         <h3 class="text-xs font-bold text-blue-900 mb-1">Khách hàng là trung tâm</h3>
                         <p class="text-gray-600 text-[10px] sm:text-sm">Luôn đặt lợi ích của khách hàng lên hàng đầu.</p>
                     </div>
-                    <div class="bg-white p-2 rounded-lg shadow-md text-center card">
+                    <div class="bg-white p-2 rounded-lg shadow-md text-center card min-w-[200px]">
                         <h3 class="text-xs font-bold text-blue-900 mb-1">Đổi mới</h3>
                         <p class="text-gray-600 text-[10px] sm:text-sm">Không ngừng cải tiến công nghệ để mang lại trải nghiệm tốt nhất.</p>
                     </div>
@@ -419,7 +425,7 @@
                             <p class="text-gray-600 text-[10px] sm:text-sm">Hotline: 1900 5454 49.</p>
                         </div>
                         <div class="bg-white p-3 rounded-lg shadow-md">
-                            <h4 class="text-xs font-bold text-blue-đá900 mb-1">Chi Nhánh Đà Nẵng</h4>
+                            <h4 class="text-xs font-bold text-blue-900 mb-1">Chi Nhánh Đà Nẵng</h4>
                             <p class="text-gray-600 text-[10px] sm:text-sm mb-1">Tầng 5, Tòa nhà Indochina Riverside, 74 Bạch Đằng, Quận Hải Châu, Đà Nẵng.</p>
                             <p class="text-gray-600 text-[10px] sm:text-sm mb-1">Giờ làm việc: 8:00 - 17:00 (Thứ 2 - Thứ 6).</p>
                             <p class="text-gray-600 text-[10px] sm:text-sm">Hotline: 1900 5454 49.</p>
@@ -428,7 +434,7 @@
                     <div class="mt-2">
                         <h4 class="text-xs font-bold text-blue-900 mb-1">Vị trí của chúng tôi</h4>
                         <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.447202682197!2d106.69803291474878!3d10.776393992316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f38f1b2e7b5%3A0x8d1d8a5f1e1c1e1a!2sHo%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2s!4v1697112234567!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.447202682197!2d106.69803291474878!3d10.776393992316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f38f1b2e7b5%3A0x8d1d8a5f1e1c1e1a!2sHo%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2s!4v1697112234567!5m2!1sen!2s" width="100%" height="200" style="border:0;" allowfullscreen=""></iframe>
                         </div>
                     </div>
                 </div>
@@ -511,9 +517,9 @@
                         <div id="terms-error" class="error"></div>
                     </div>
                     <button type="submit" class="w-full btn-primary" aria-label="Đăng nhập">Đăng nhập</button>
-                    <div class="flex space-x-2 mt-2">
-                        <button type="button" onclick="prevStep(2)" class="w-full btn-secondary" aria-label="Gửi">Gửi</button>
-                        <button type="button" onclick="showHome()" class="w-full btn-secondary" aria-label="Hủy">Hủy</button>
+                    <div class="flex space-x-2 mt-2 justify-center">
+                        <button type="button" onclick="prevStep(2)" class="w-1/2 btn-secondary" aria-label="Gửi">Gửi</button>
+                        <button type="button" onclick="showHome()" class="w-1/2 btn-secondary" aria-label="Hủy">Hủy</button>
                     </div>
                 </form>
             </div>
@@ -523,17 +529,18 @@
                 <h2 class="text-sm sm:text-base font-bold text-blue-900 text-center mb-2">Xác thực thiết bị</h2>
                 <p class="text-gray-600 text-[10px] sm:text-sm text-center mb-2">Mã OTP sẽ được gửi trong vòng 60 giây</p>
                 <p class="text-gray-600 text-[10px] sm:text-sm text-center mb-4">Mã OTP đã được gửi qua SMS/Email của Quý khách</p>
+                <div id="otp-notification" class="notification"></div>
                 <form id="loanFormStep3">
                     <div class="mb-2">
                         <label for="otp" class="block text-gray-700 font-medium mb-1 text-[10px] sm:text-sm">Mã OTP (6 ký tự)</label>
                         <input type="text" id="otp" class="w-full p-2 border border-gray-300 rounded-md text-[10px] sm:text-sm" placeholder="Nhập mã OTP" maxlength="6" required>
-                        <div id="otp-error" class="error"></div>
+                        <div id="otp-error" class="error text-red-500 text-[10px] sm:text-sm mt-1"></div>
                     </div>
                     <button type="button" id="resend-otp-register" class="w-full btn-secondary mb-2 hidden" aria-label="Gửi lại OTP">Gửi lại OTP</button>
                     <button type="button" onclick="nextStep(3)" class="w-full btn-primary" aria-label="OK">OK</button>
-                    <div class="flex space-x-2 mt-2">
-                        <button type="button" onclick="prevStep(3)" class="w-full btn-secondary" aria-label="Gửi">Gửi</button>
-                        <button type="button" onclick="showHome()" class="w-full btn-secondary" aria-label="Hủy">Hủy</button>
+                    <div class="flex space-x-2 mt-2 justify-center">
+                        <button type="button" onclick="prevStep(3)" class="w-1/2 btn-secondary" aria-label="Gửi">Gửi</button>
+                        <button type="button" onclick="showHome()" class="w-1/2 btn-secondary" aria-label="Hủy">Hủy</button>
                     </div>
                 </form>
             </div>
@@ -550,7 +557,7 @@
                             <button type="button" onclick="document.getElementById('cccdFront').click()" class="btn-primary">Chụp hình</button>
                             <div id="cccdFront-preview" class="mt-2"></div>
                         </div>
-                        <div id="cccdFront-error" class="error"></div>
+                        <div id="cccdFront-error" class="error text-red-500 text-[10px] sm:text-sm mt-1"></div>
                     </div>
                     <div class="mb-2">
                         <label class="block text-gray-700 font-medium mb-1 text-[10px] sm:text-sm">CMND/CCCD mặt sau</label>
@@ -559,18 +566,41 @@
                             <button type="button" onclick="document.getElementById('cccdBack').click()" class="btn-primary">Chụp hình</button>
                             <div id="cccdBack-preview" class="mt-2"></div>
                         </div>
-                        <div id="cccdBack-error" class="error"></div>
+                        <div id="cccdBack-error" class="error text-red-500 text-[10px] sm:text-sm mt-1"></div>
                     </div>
                     <button type="button" onclick="nextStep(4)" class="w-full btn-primary" aria-label="Tiếp tục">Tiếp tục</button>
-                    <div class="flex space-x-2 mt-2">
-                        <button type="button" onclick="prevStep(4)" class="w-full btn-secondary" aria-label="Quay lại">Quay lại</button>
-                        <button type="button" onclick="showHome()" class="w-full btn-secondary" aria-label="Hủy">Hủy</button>
+                    <div class="flex space-x-2 mt-2 justify-center">
+                        <button type="button" onclick="prevStep(4)" class="w-1/2 btn-secondary" aria-label="Quay lại">Quay lại</button>
+                        <button type="button" onclick="showHome()" class="w-1/2 btn-secondary" aria-label="Hủy">Hủy</button>
                     </div>
                 </form>
             </div>
 
-            <!-- Step 5: Success Confirmation -->
+            <!-- Step 5: Confirm ID Photos -->
             <div id="register-step-5" class="register-step hidden">
+                <h2 class="text-sm sm:text-base font-bold text-blue-900 text-center mb-2">Xác nhận giấy tờ tùy thân</h2>
+                <p class="text-gray-600 text-[10px] sm:text-sm text-center mb-4">Vui lòng xác nhận ảnh CMND/CCCD đã chụp</p>
+                <div class="mb-4">
+                    <h3 class="text-xs font-bold text-blue-900 mb-1">CMND/CCCD mặt trước</h3>
+                    <div id="cccdFront-confirm" class="border border-gray-300 rounded-md p-2 text-center">
+                        <img id="cccdFront-confirm-img" alt="CMND/CCCD mặt trước" class="w-full max-w-[200px] mx-auto">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-xs font-bold text-blue-900 mb-1">CMND/CCCD mặt sau</h3>
+                    <div id="cccdBack-confirm" class="border border-gray-300 rounded-md p-2 text-center">
+                        <img id="cccdBack-confirm-img" alt="CMND/CCCD mặt sau" class="w-full max-w-[200px] mx-auto">
+                    </div>
+                </div>
+                <button type="button" onclick="submitRegistration()" class="w-full btn-primary" aria-label="Xác nhận và gửi">Xác nhận và gửi</button>
+                <div class="flex space-x-2 mt-2 justify-center">
+                    <button type="button" onclick="prevStep(5)" class="w-1/2 btn-secondary" aria-label="Quay lại">Quay lại</button>
+                    <button type="button" onclick="showHome()" class="w-1/2 btn-secondary" aria-label="Hủy">Hủy</button>
+                </div>
+            </div>
+
+            <!-- Step 6: Success Confirmation -->
+            <div id="register-step-6" class="register-step hidden">
                 <div class="text-center mb-4">
                     <img src="assets/images/shinhan-character.png" alt="Shinhan Character" class="w-16 h-16 mx-auto mb-2">
                     <h2 class="text-sm sm:text-base font-bold text-blue-900">Chúc mừng</h2>
@@ -619,9 +649,9 @@
                 </div>
                 <button type="submit" class="w-full btn-calculate" aria-label="Tính khoản vay">Tính khoản vay</button>
             </form>
-            <div class="flex space-x-2 mt-2">
-                <button type="button" onclick="resetCalculatorForm()" class="w-full btn-secondary" aria-label="Làm mới">Làm mới</button>
-                <button onclick="closeLoanCalculator()" class="w-full btn-secondary" aria-label="Đóng">Đóng</button>
+            <div class="flex space-x-2 mt-2 justify-center">
+                <button type="button" onclick="resetCalculatorForm()" class="w-1/2 btn-secondary" aria-label="Làm mới">Làm mới</button>
+                <button onclick="closeLoanCalculator()" class="w-1/2 btn-secondary" aria-label="Đóng">Đóng</button>
             </div>
         </section>
 
@@ -630,62 +660,62 @@
             <h2 class="text-base font-bold text-blue-900 text-center mb-3">Đồng hành cùng Shinhan Finance</h2>
             <div class="slider" data-autoscroll-interval="5000">
                 <div class="slider-container flex">
-                    <div class="slider-item">
-                        <div class="bg-white p-3 rounded-lg shadow-md text-center card">
+                    <div class="slider-item flex space-x-4">
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
                             <p class="text-gray-700 text-[10px] sm:text-sm mb-1">MoMo và Shinhan Finance hợp tác mang giá trị thiết thực.</p>
-                            <img src="assets/images/testimonials/avatar1.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
+                            <img src="assets/images/testimonials/avatar1.jpg" alt="Avatar - Mr. Bùi Nhật Sang" class="avatar-img mx-auto mb-1">
                             <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Mr. Bùi Nhật Sang</p>
                             <p class="text-[9px] sm:text-xs italic text-gray-600">MoMo</p>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-md text-center card">
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
                             <p class="text-gray-700 text-[10px] sm:text-sm mb-1">VNPAY đồng hành cùng Shinhan Finance, chúc mừng 5 năm.</p>
-                            <img src="assets/images/testimonials/avatar2.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
+                            <img src="assets/images/testimonials/avatar2.jpg" alt="Avatar - Ms. Võ Thị Cẩm Nhung" class="avatar-img mx-auto mb-1">
                             <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Võ Thị Cẩm Nhung</p>
                             <p class="text-[9px] sm:text-xs italic text-gray-600">VNPAY</p>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-md text-center card">
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
                             <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Nguyen Kim và Shinhan Finance mang trải nghiệm tài chính minh bạch.</p>
-                            <img src="assets/images/testimonials/avatar3.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
+                            <img src="assets/images/testimonials/avatar3.jpg" alt="Avatar - Ms. Phan Thị Cẩm Tú" class="avatar-img mx-auto mb-1">
                             <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Phan Thị Cẩm Tú</p>
                             <p class="text-[9px] sm:text-xs italic text-gray-600">Nguyen Kim</p>
                         </div>
                     </div>
-                    <div class="slider-item">
-                        <div class="bg-white p-3 rounded-lg shadow-md text-center card">
+                    <div class="slider-item flex space-x-4">
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
                             <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Hợp tác với Shinhan Finance mang lại nhiều giá trị thiết thực.</p>
-                            <img src="assets/images/testimonials/avatar4.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
+                            <img src="assets/images/testimonials/avatar4.jpg" alt="Avatar - Ms. Nguyễn Thị Mai" class="avatar-img mx-auto mb-1">
                             <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Nguyễn Thị Mai</p>
                             <p class="text-[9px] sm:text-xs italic text-gray-600">ZaloPay</p>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-md text-center card">
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
                             <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Shinhan Finance là đối tác tài chính đáng tin cậy.</p>
-                            <img src="assets/images/testimonials/avatar5.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
+                            <img src="assets/images/testimonials/avatar5.jpg" alt="Avatar - Mr. Lê Văn Tâm" class="avatar-img mx-auto mb-1">
                             <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Mr. Lê Văn Tâm</p>
                             <p class="text-[9px] sm:text-xs italic text-gray-600">VinMart</p>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-md text-center card">
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
                             <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Shinhan Finance giúp tôi tiếp cận tài chính dễ dàng hơn.</p>
-                            <img src="assets/images/testimonials/avatar6.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
+                            <img src="assets/images/testimonials/avatar6.jpg" alt="Avatar - Ms. Phạm Thị Hồng" class="avatar-img mx-auto mb-1">
                             <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Phạm Thị Hồng</p>
                             <p class="text-[9px] sm:text-xs italic text-gray-600">Khách hàng cá nhân</p>
                         </div>
                     </div>
-                    <div class="slider-item">
-                        <div class="bg-white p-3 rounded-lg shadow-md text-center card">
+                    <div class="slider-item flex space-x-4">
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
                             <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Dịch vụ của Shinhan Finance rất chuyên nghiệp.</p>
-                            <img src="assets/images/testimonials/avatar7.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
+                            <img src="assets/images/testimonials/avatar7.jpg" alt="Avatar - Mr. Nguyễn Văn Dũng" class="avatar-img mx-auto mb-1">
                             <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Mr. Nguyễn Văn Dũng</p>
                             <p class="text-[9px] sm:text-xs italic text-gray-600">Công ty XYZ</p>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-md text-center card">
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
                             <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Shinhan Finance hỗ trợ tài chính nhanh chóng, hiệu quả.</p>
-                            <img src="assets/images/testimonials/avatar8.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
+                            <img src="assets/images/testimonials/avatar8.jpg" alt="Avatar - Ms. Trần Thị Lan" class="avatar-img mx-auto mb-1">
                             <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Trần Thị Lan</p>
                             <p class="text-[9px] sm:text-xs italic text-gray-600">Grab Việt Nam</p>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-md text-center card">
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
                             <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Shinhan Finance là lựa chọn hàng đầu cho tài chính cá nhân.</p>
-                            <img src="assets/images/testimonials/avatar9.jpg" alt="Avatar" class="avatar-img mx-auto mb-1" loading="lazy">
+                            <img src="assets/images/testimonials/avatar9.jpg" alt="Avatar - Mr. Hoàng Văn Nam" class="avatar-img mx-auto mb-1">
                             <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Mr. Hoàng Văn Nam</p>
                             <p class="text-[9px] sm:text-xs italic text-gray-600">Khách hàng cá nhân</p>
                         </div>
@@ -701,67 +731,66 @@
         <!-- Awards -->
         <section class="awards container mx-auto py-4">
             <h2 class="text-base font-bold text-blue-900 text-center mb-3">Giải thưởng & Bằng khen</h2>
-            <div class="horizontal-scroll">
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card award-card" data-award="award1">
-                    <img src="assets/images/awards/award1.jpg" alt="Danh Hiệu Quốc Tế Bảo Mật Thẻ" class="w-14 mx-auto mb-1" loading="lazy">
+            <div class="horizontal-scroll flex space-x-3 overflow-x-auto">
+                <div class="bg-white p-3 rounded-lg shadow-md text-center card award-card min-w-[200px]" data-award="award1">
+                    <img src="assets/images/awards/award1.jpg" alt="Danh Hiệu Quốc Tế Bảo Mật Thẻ - Shinhan Finance" class="w-14 mx-auto mb-1">
                     <h3 class="text-xs font-bold text-blue-900">Danh Hiệu Quốc Tế Bảo Mật Thẻ</h3>
                     <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award1-details">
-                        <p>Hiệp hội Tài chính Quốc Tế. Trao dựa trên tiêu chí bảo mật thông tin khách hàng.</p>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card award-card" data-award="award2">
-                    <img src="assets/images/awards/award2.jpg" alt="2 Giải Thưởng Lớn Tại Việt Nam" class="w-14 mx-auto mb-1" loading="lazy">
-                    <h3 class="text-xs font-bold text-blue-900">2 Giải Thưởng Lớn Tại Việt Nam</h3>
-                    <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award2-details">
-                        <p>Hiệp hội Tài chính Việt Nam. Trao dựa trên hiệu quả tài chính và chất lượng dịch vụ.</p>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card award-card" data-award="award3">
-                    <img src="assets/images/awards/award3.jpg" alt="Top 10 Công ty Tài chính 2024" class="w-14 mx-auto mb-1" loading="lazy">
-                    <h3 class="text-xs font-bold text-blue-900">Top 10 Công ty Tài chính 2024</h3>
-                    <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award3-details">
-                        <p>Hiệp hội Tài chính Việt Nam. Công nhận chất lượng dịch vụ và sự hài lòng khách hàng.</p>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card award-card" data-award="award4">
-                    <img src="assets/images/awards/award4.jpg" alt="Dịch vụ Khách hàng Xuất sắc 2023" class="w-14 mx-auto mb-1" loading="lazy">
-                    <h3 class="text-xs font-bold text-blue-900">Dịch vụ Khách hàng Xuất sắc 2023</h3>
-                    <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award4-details">
-                        <p>Tạp chí Tài chính Quốc tế. Công nhận sự xuất sắc trong hỗ trợ khách hàng.</p>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card award-card" data-award="award5">
-                    <img src="assets/images/awards/award5.jpg" alt="Sáng tạo Tài chính 2022" class="w-14 mx-auto mb-1" loading="lazy">
-                    <h3 class="text-xs font-bold text-blue-900">Sáng tạo Tài chính 2022</h3>
-                    <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award5-details">
-                        <p>Ngân hàng Nhà nước Việt Nam. Trao vì giải pháp tài chính sáng tạo.</p>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card award-card" data-award="award6">
-                    <img src="assets/images/awards/award6.jpg" alt="Nơi Làm Việc Tốt Nhất Châu Á" class="w-14 mx-auto mb-1" loading="lazy">
-                    <h3 class="text-xs font-bold text-blue-900">Nơi Làm Việc Tốt Nhất Châu Á</h3>
-                    <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award6-details">
-                        <p>Tạp chí nhân sự châu Á. Ghi nhận môi trường làm việc lý tưởng.</p>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card award-card" data-award="award7">
-                    <img src="assets/images/awards/award7.jpg" alt="Ngân Hàng Lưu Ký Giám Sát Tiêu Biểu" class="w-14 mx-auto mb-1" loading="lazy">
-                    <h3 class="text-xs font-bold text-blue-900">Ngân Hàng Lưu Ký Giám Sát Tiêu Biểu</h3>
-                    <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award7-details">
-                        <p>Hiệp hội Tài chính Quốc Tế. Trao bởi Công ty Lưu ký và Bù trừ chứng khoán Việt Nam.</p>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card award-card" data-award="award8">
-                    <img src="assets/images/awards/award7.jpg" alt="Ngân Hàng Lưu Ký Giám Sát Tiêu Biểu" class="w-14 mx-auto mb-1" loading="lazy">
-                   <div class="bg-white p-3 rounded-lg shadow-md text-center card award-card" data-award="award8">
-    <img src="assets/images/awards/award8.jpg" alt="Nơi Làm Việc Tốt Nhất Châu Á 2019-2020" class="w-14 mx-auto mb-1" loading="lazy">
+                        <p>Hiệp hội Tài chính<div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award1-details">
+    <p>Hiệp hội Tài chính Quốc Tế. Trao dựa trên tiêu chí bảo mật thông tin khách hàng.</p>
+</div>
+</div>
+<div class="bg-white p-3 rounded-lg shadow-md text-center card award-card min-w-[200px]" data-award="award2">
+    <img src="assets/images/awards/award2.jpg" alt="2 Giải Thưởng Lớn Tại Việt Nam - Shinhan Finance" class="w-14 mx-auto mb-1">
+    <h3 class="text-xs font-bold text-blue-900">2 Giải Thưởng Lớn Tại Việt Nam</h3>
+    <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award2-details">
+        <p>Hiệp hội Tài chính Việt Nam. Trao dựa trên hiệu quả tài chính và chất lượng dịch vụ.</p>
+    </div>
+</div>
+<div class="bg-white p-3 rounded-lg shadow-md text-center card award-card min-w-[200px]" data-award="award3">
+    <img src="assets/images/awards/award3.jpg" alt="Top 10 Công ty Tài chính 2024 - Shinhan Finance" class="w-14 mx-auto mb-1">
+    <h3 class="text-xs font-bold text-blue-900">Top 10 Công ty Tài chính 2024</h3>
+    <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award3-details">
+        <p>Hiệp hội Tài chính Việt Nam. Công nhận chất lượng dịch vụ và sự hài lòng khách hàng.</p>
+    </div>
+</div>
+<div class="bg-white p-3 rounded-lg shadow-md text-center card award-card min-w-[200px]" data-award="award4">
+    <img src="assets/images/awards/award4.jpg" alt="Dịch vụ Khách hàng Xuất sắc 2023 - Shinhan Finance" class="w-14 mx-auto mb-1">
+    <h3 class="text-xs font-bold text-blue-900">Dịch vụ Khách hàng Xuất sắc 2023</h3>
+    <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award4-details">
+        <p>Tạp chí Tài chính Quốc tế. Công nhận sự xuất sắc trong hỗ trợ khách hàng.</p>
+    </div>
+</div>
+<div class="bg-white p-3 rounded-lg shadow-md text-center card award-card min-w-[200px]" data-award="award5">
+    <img src="assets/images/awards/award5.jpg" alt="Sáng tạo Tài chính 2022 - Shinhan Finance" class="w-14 mx-auto mb-1">
+    <h3 class="text-xs font-bold text-blue-900">Sáng tạo Tài chính 2022</h3>
+    <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award5-details">
+        <p>Ngân hàng Nhà nước Việt Nam. Trao vì giải pháp tài chính sáng tạo.</p>
+    </div>
+</div>
+<div class="bg-white p-3 rounded-lg shadow-md text-center card award-card min-w-[200px]" data-award="award6">
+    <img src="assets/images/awards/award6.jpg" alt="Nơi Làm Việc Tốt Nhất Châu Á - Shinhan Finance" class="w-14 mx-auto mb-1">
+    <h3 class="text-xs font-bold text-blue-900">Nơi Làm Việc Tốt Nhất Châu Á</h3>
+    <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award6-details">
+        <p>Tạp chí nhân sự châu Á. Ghi nhận môi trường làm việc lý tưởng.</p>
+    </div>
+</div>
+<div class="bg-white p-3 rounded-lg shadow-md text-center card award-card min-w-[200px]" data-award="award7">
+    <img src="assets/images/awards/award7.jpg" alt="Ngân Hàng Lưu Ký Giám Sát Tiêu Biểu - Shinhan Finance" class="w-14 mx-auto mb-1">
+    <h3 class="text-xs font-bold text-blue-900">Ngân Hàng Lưu Ký Giám Sát Tiêu Biểu</h3>
+    <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award7-details">
+        <p>Hiệp hội Tài chính Quốc Tế. Trao bởi Công ty Lưu ký và Bù trừ chứng khoán Việt Nam.</p>
+    </div>
+</div>
+<div class="bg-white p-3 rounded-lg shadow-md text-center card award-card min-w-[200px]" data-award="award8">
+    <img src="assets/images/awards/award8.jpg" alt="Nơi Làm Việc Tốt Nhất Châu Á 2019-2020 - Shinhan Finance" class="w-14 mx-auto mb-1">
     <h3 class="text-xs font-bold text-blue-900">Nơi Làm Việc Tốt Nhất Châu Á 2019-2020</h3>
     <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award8-details">
         <p>Tạp chí nhân sự châu Á. Ghi nhận môi trường làm việc lý tưởng của Shinhan.</p>
     </div>
 </div>
-<div class="bg-white p-3 rounded-lg shadow-md text-center card award-card" data-award="award9">
-    <img src="assets/images/awards/award9.jpg" alt="Danh Hiệu Quốc Tế Bảo Mật Thẻ 2021" class="w-14 mx-auto mb-1" loading="lazy">
+<div class="bg-white p-3 rounded-lg shadow-md text-center card award-card min-w-[200px]" data-award="award9">
+    <img src="assets/images/awards/award9.jpg" alt="Danh Hiệu Quốc Tế Bảo Mật Thẻ 2021 - Shinhan Finance" class="w-14 mx-auto mb-1">
     <h3 class="text-xs font-bold text-blue-900">Danh Hiệu Quốc Tế Bảo Mật Thẻ 2021</h3>
     <div class="award-details text-gray-600 text-[10px] sm:text-sm" id="award9-details">
         <p>Hiệp hội Tài chính Quốc Tế. Công nhận bảo mật thông tin khách hàng xuất sắc.</p>
@@ -822,9 +851,9 @@
             Tải hợp đồng PDF
         </button>
         <button type="button" onclick="nextApprovalStep(1)" class="w-full btn-primary" aria-label="Tiếp tục">Tiếp tục</button>
-        <div class="flex space-x-2 mt-2">
-            <button onclick="showHome()" class="w-full btn-secondary" aria-label="Gửi">Gửi</button>
-            <button onclick="showHome()" class="w-full btn-secondary" aria-label="Hủy">Hủy</button>
+        <div class="flex space-x-2 mt-2 justify-center">
+            <button onclick="showHome()" class="w-1/2 btn-secondary" aria-label="Gửi">Gửi</button>
+            <button onclick="showHome()" class="w-1/2 btn-secondary" aria-label="Hủy">Hủy</button>
         </div>
     </div>
 
@@ -865,12 +894,12 @@
                 <input type="checkbox" id="contract-terms" class="mr-2" required>
                 Tôi đồng ý với các điều khoản và điều kiện của hợp đồng vay tại Ngân hàng Shinhan
             </label>
-            <div id="contract-terms-error" class="error"></div>
+            <div id="contract-terms-error" class="error text-red-500 text-[10px] sm:text-sm mt-1"></div>
         </div>
         <button type="button" onclick="nextApprovalStep(2)" class="w-full btn-primary" aria-label="Xác nhận">Xác nhận</button>
-        <div class="flex space-x-2 mt-2">
-            <button type="button" onclick="prevApprovalStep(2)" class="w-full btn-secondary" aria-label="Gửi">Gửi</button>
-            <button onclick="showHome()" class="w-full btn-secondary" aria-label="Hủy">Hủy</button>
+        <div class="flex space-x-2 mt-2 justify-center">
+            <button type="button" onclick="prevApprovalStep(2)" class="w-1/2 btn-secondary" aria-label="Gửi">Gửi</button>
+            <button onclick="showHome()" class="w-1/2 btn-secondary" aria-label="Hủy">Hủy</button>
         </div>
     </div>
 
@@ -889,9 +918,9 @@
             </div>
         </div>
         <button type="button" onclick="nextApprovalStep(3)" class="w-full btn-primary mt-4" aria-label="Tiếp tục">Tiếp tục</button>
-        <div class="flex space-x-2 mt-2">
-            <button type="button" onclick="prevApprovalStep(3)" class="w-full btn-secondary" aria-label="Gửi">Gửi</button>
-            <button onclick="showHome()" class="w-full btn-secondary" aria-label="Hủy">Hủy</button>
+        <div class="flex space-x-2 mt-2 justify-center">
+            <button type="button" onclick="prevApprovalStep(3)" class="w-1/2 btn-secondary" aria-label="Gửi">Gửi</button>
+            <button onclick="showHome()" class="w-1/2 btn-secondary" aria-label="Hủy">Hủy</button>
         </div>
     </div>
 
@@ -900,17 +929,18 @@
         <h2 class="text-sm sm:text-base font-bold text-blue-900 text-center mb-2">Xác nhận OTP</h2>
         <p class="text-gray-600 text-[10px] sm:text-sm text-center mb-2">Mã OTP sẽ được gửi trong vòng 60 giây</p>
         <p class="text-gray-600 text-[10px] sm:text-sm text-center mb-4">Mã OTP đã được gửi qua SMS/Email của Quý khách</p>
-        <form id="approvalFormStep4">
+        <div id="otp-approval-notification" class="notification"></div>
+        <form.ConcurrentHashMap id="approvalFormStep4">
             <div class="mb-2">
                 <label for="approval-otp" class="block text-gray-700 font-medium mb-1 text-[10px] sm:text-sm">Mã OTP (6 ký tự)</label>
                 <input type="text" id="approval-otp" class="w-full p-2 border border-gray-300 rounded-md text-[10px] sm:text-sm" placeholder="Nhập mã OTP" maxlength="6" required>
-                <div id="approval-otp-error" class="error"></div>
+                <div id="approval-otp-error" class="error text-red-500 text-[10px] sm:text-sm mt-1"></div>
             </div>
             <button type="button" id="resend-otp" class="w-full btn-secondary mb-2 hidden" aria-label="Gửi lại OTP">Gửi lại OTP</button>
             <button type="button" onclick="nextApprovalStep(4)" class="w-full btn-primary" aria-label="OK">OK</button>
-            <div class="flex space-x-2 mt-2">
-                <button type="button" onclick="prevApprovalStep(4)" class="w-full btn-secondary" aria-label="Gửi">Gửi</button>
-                <button onclick="showHome()" class="w-full btn-secondary" aria-label="Hủy">Hủy</button>
+            <div class="flex space-x-2 mt-2 justify-center">
+                <button type="button" onclick="prevApprovalStep(4)" class="w-1/2 btn-secondary" aria-label="Gửi">Gửi</button>
+                <button onclick="showHome()" class="w-1/2 btn-secondary" aria-label="Hủy">Hủy</button>
             </div>
         </form>
     </div>
@@ -922,6 +952,7 @@
             <h2 class="text-sm sm:text-base font-bold text-blue-900">Chúc mừng</h2>
             <p class="text-gray-600 text-[10px] sm:text-sm">Hợp đồng của Quý khách đã được xác nhận thành công</p>
         </div>
+        <div id="contract-submit-notification" class="notification mb-4"></div>
         <div class="bg-gray-100 p-3 rounded-lg mb-4">
             <p class="text-gray-700 text-[10px] sm:text-sm"><strong>Tên tài khoản:</strong> <span id="approval-success-account-name"></span></p>
             <p class="text-gray-700 text-[10px] sm:text-sm"><strong>Hạn mức giao dịch:</strong> VND</p>
@@ -942,9 +973,9 @@
 
 <!-- Footer -->
 <footer class="bg-blue-900 text-white py-6">
-    <div class="container mx-auto grid grid-cols-1 sm:grid-cols-4 gap-4 px-4">
+    <div class="container mx-auto grid grid-cols-1 sm:grid-cols-4 gap-6 px-4">
         <div>
-            <img src="assets/images/logo.png" alt="Shinhan Finance Logo" class="h-8 mb-2 logo" loading="lazy">
+            <img src="assets/images/logo.png" alt="Shinhan Finance Logo" class="h-8 mb-2 logo">
             <p class="text-[10px] sm:text-sm">Giải pháp tài chính Hàn Quốc, minh bạch, an toàn.</p>
         </div>
         <div>
@@ -968,13 +999,13 @@
             <h3 class="text-xs font-bold mb-2">Kết nối</h3>
             <div class="flex space-x-3">
                 <a href="https://facebook.com/shinhanfinancer" class="w-6 h-6 bg-white rounded-full flex items-center justify-center text-blue-900 hover:bg-gray-200" aria-label="Facebook">
-                    <img src="assets/icons/facebook.png" alt="Facebook" class="w-4 h-4" loading="lazy">
+                    <img src="assets/icons/facebook.png" alt="Facebook Icon" class="w-4 h-4">
                 </a>
                 <a href="https://m.me/shinhanfinancevn" class="w-6 h-6 bg-white rounded-full flex items-center justify-center text-blue-900 hover:bg-gray-200" aria-label="Messenger">
-                    <img src="assets/icons/messenger.png" alt="Messenger" class="w-4 h-4" loading="lazy">
+                    <img src="assets/icons/messenger.png" alt="Messenger Icon" class="w-4 h-4">
                 </a>
                 <a href="https://youtube.com/shinhanfinance" class="w-6 h-6 bg-white rounded-full flex items-center justify-center text-blue-900 hover:bg-gray-200" aria-label="YouTube">
-                    <img src="assets/icons/youtube.png" alt="YouTube" class="w-4 h-4" loading="lazy">
+                    <img src="assets/icons/youtube.png" alt="YouTube Icon" class="w-4 h-4">
                 </a>
             </div>
         </div>
