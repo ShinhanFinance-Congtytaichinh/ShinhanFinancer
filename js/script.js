@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const menuItems = document.querySelector('.menu-items');
     hamburger.addEventListener('click', () => {
+        console.log('Hamburger clicked');
         const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
         hamburger.setAttribute('aria-expanded', !isExpanded);
         menuItems.classList.toggle('hidden');
@@ -55,8 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sliderNext = document.querySelector('[data-slider-next]');
 
     function showSlide(index) {
-        slides.forEach(slide => slide.style.display = 'none');
-        slides[index].style.display = 'flex';
+        const sliderContainer = document.querySelector('.slider-container');
+        sliderContainer.style.transform = `translateX(-${index * 100}%)`;
+        currentSlide = index;
     }
 
     sliderPrev.addEventListener('click', () => {
@@ -95,6 +97,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showPromoSlide(currentPromoSlide);
 
+    // Register Now Buttons
+    document.querySelectorAll('.register-now-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            console.log('Register Now button clicked');
+            showRegisterForm();
+        });
+    });
+
+    // Calculate Loan Buttons
+    document.querySelectorAll('.calculate-loan-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            console.log('Calculate Loan button clicked');
+            showLoanCalculator();
+        });
+    });
+
     // Loan Calculator Form
     document.getElementById('calculatorForm').addEventListener('submit', (e) => {
         e.preventDefault();
@@ -107,22 +125,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const calcMonthlyPayment = document.getElementById('calcMonthlyPayment');
         const notification = document.getElementById('calculator-notification');
 
-        // Validation
         if (!loanAmount || !loanTerm || !loanType) {
             notification.textContent = 'Vui lòng điền đầy đủ thông tin';
             notification.style.color = 'red';
             return;
         }
 
-        // Clear previous notification
         notification.textContent = '';
 
-        // Interest rates
-        const interestRate = loanType === 'Vay tiêu dùng' ? 18 : 5.89; // Annual rate in %
-        const monthlyRate = interestRate / 100 / 12; // Monthly rate
+        const interestRate = loanType === 'Vay tiêu dùng' ? 18 : 5.89;
+        const monthlyRate = interestRate / 100 / 12;
         const monthlyPayment = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -loanTerm));
 
-        // Display results
         calcInterestRate.textContent = interestRate.toFixed(2);
         calcMonthlyPayment.textContent = monthlyPayment.toFixed(0);
         calcResult.style.display = 'block';
@@ -257,16 +271,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
 
-        // Add Shinhan Finance Logo and Header
         doc.addImage('assets/images/logo.png', 'PNG', 10, 10, 30, 10);
         doc.setFontSize(16);
-        doc.setTextColor(30, 58, 138); // Shinhan navy blue
+        doc.setTextColor(30, 58, 138);
         doc.text('HỢP ĐỒNG VAY VỐN', 70, 20);
         doc.setFontSize(10);
         doc.setTextColor(100);
         doc.text(`Ngày: ${new Date().toLocaleDateString('vi-VN')}`, 170, 20);
 
-        // Add Profile Details
         const formData = JSON.parse(localStorage.getItem('formData'));
         if (formData) {
             doc.setFontSize(12);
@@ -294,7 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 doc.text(line, 10, 50 + (index * 8));
             });
 
-            // Add Signature Section
             doc.setLineWidth(0.5);
             doc.line(10, 140, 60, 140);
             doc.line(150, 140, 200, 140);
@@ -305,17 +316,14 @@ document.addEventListener('DOMContentLoaded', () => {
             doc.text('(Ký và ghi rõ họ tên)', 150, 155);
         }
 
-        // Download the PDF
-        doc.save(`HopDongVayVon_${formData.fullName}_${new Date().toISOString().split('T')[0]}.pdf');
+        doc.save(`HopDongVayVon_${formData.fullName}_${new Date().toISOString().split('T')[0]}.pdf`);
 
-        // Show Confirmation Modal
         showConfirmationModal();
     });
 
     // Image Preview for File Uploads
     ['cccdFront', 'cccdBack', 'atmFront', 'atmBack'].forEach(id => {
         document.getElementById(id).addEventListener('change', function(event) {
-            // Remove previous preview if exists
             const existingPreview = this.parentElement.querySelector('.preview-img');
             if (existingPreview) {
                 existingPreview.remove();
@@ -366,12 +374,14 @@ function showHome() {
 }
 
 function showRegisterForm() {
+    console.log('Showing Register Form');
     document.querySelectorAll('.content-section, #register-form, #loan-approval').forEach(section => section.classList.add('hidden'));
     document.getElementById('register-form').classList.remove('hidden');
     updateProgress('register');
 }
 
 function showLoanCalculator() {
+    console.log('Showing Loan Calculator');
     document.querySelectorAll('.content-section, #register-form, #loan-approval').forEach(section => section.classList.add('hidden'));
     document.getElementById('loan-calculator-modal').classList.remove('hidden');
 }
