@@ -1,105 +1,114 @@
-/* Font */
+/* General Styles */
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #f3f4f6;
+    margin: 0;
+    padding: 0;
 }
 
-/* General Styles */
 .container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.hidden {
-    display: none;
-}
-
-.notification {
-    color: red;
-    font-size: 10px;
-    text-align: center;
-    margin-bottom: 8px;
-}
-
-.error {
-    color: red;
-    font-size: 10px;
-    margin-top: 4px;
-    display: none;
-}
-
-.error.active {
-    display: block;
+.bg-gray-100 {
+    background-color: #f3f4f6;
 }
 
 /* Buttons */
-.btn-secondary {
-    background-color: #FFD700;
-    color: #1E3A8A;
+.btn-primary {
+    background-color: #1d4ed8;
+    color: white;
     padding: 8px 16px;
     border-radius: 4px;
-    font-size: 12px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #1e40af;
+}
+
+.btn-secondary {
+    background-color: #6b7280;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .btn-secondary:hover {
-    background-color: #e6c200;
+    background-color: #4b5563;
 }
 
 .btn-calculate {
-    background-color: #FFD700;
-    color: #1E3A8A;
+    background-color: #f59e0b;
+    color: white;
     padding: 8px 16px;
     border-radius: 4px;
-    font-size: 12px;
-    font-weight: 500;
+    border: none;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .btn-calculate:hover {
-    background-color: #e6c200;
+    background-color: #d97706;
 }
 
-.btn-messenger {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #FFD700;
-    padding: 10px;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Header */
+/* Menu */
 header {
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 20;
 }
 
-.hamburger {
-    z-index: 60;
-    position: relative;
+.hamburger, .close-menu {
+    display: block;
 }
 
-.menu-items {
-    background-color: #1E3A8A;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
+@media (min-width: 640px) {
+    .hamburger, .close-menu {
+        display: none;
+    }
+    .menu-items {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        padding: 0;
+        background: none;
+        gap: 1rem;
+    }
+}
+
+/* Overlay for mobile menu */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9;
 }
 
-.logo {
-    height: 32px;
-    opacity: 0.9;
-    background: transparent;
+.menu-items.active + .menu-overlay {
+    display: block;
+}
+
+/* Content Sections */
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
 }
 
 /* Banner */
@@ -108,37 +117,50 @@ header {
 }
 
 .banner-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     text-align: center;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.banner-content h1 {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.banner-content p {
-    font-size: 12px;
-    margin-bottom: 12px;
 }
 
 /* Horizontal Scroll */
 .horizontal-scroll {
     display: flex;
     overflow-x: auto;
-    gap: 10px;
-    padding-bottom: 10px;
+    gap: 1rem;
 }
 
 .card {
     flex: 0 0 auto;
-    width: 200px;
+}
+
+/* Slider */
+.slider, .promo-slider {
+    position: relative;
+}
+
+.slider-container, .promo-slider-container {
+    overflow: hidden;
+}
+
+.slider-item, .promo-slider-item {
+    flex: 0 0 auto;
+}
+
+/* Increase spacing in Testimonials slider */
+.slider-item .card {
+    margin-right: 1rem;
+}
+
+/* Partner Logos */
+.partner-logo {
+    cursor: pointer;
+}
+
+@media (max-width: 640px) {
+    .partner-details p {
+        display: none;
+    }
+    .partner-details p.active {
+        display: block;
+    }
 }
 
 /* Timeline */
@@ -151,18 +173,18 @@ header {
 .timeline::before {
     content: '';
     position: absolute;
+    width: 2px;
+    background: #1d4ed8;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background: #1E3A8A;
     left: 50%;
-    margin-left: -1px;
+    transform: translateX(-50%);
 }
 
 .timeline-item {
     position: relative;
     width: 50%;
-    padding: 10px;
+    padding: 10px 20px;
     box-sizing: border-box;
 }
 
@@ -176,130 +198,99 @@ header {
     text-align: left;
 }
 
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    top: 15px;
-    width: 10px;
-    height: 10px;
-    background: #1E3A8A;
-    border-radius: 50%;
-}
-
-.timeline-item.left::before {
-    right: -5px;
-}
-
-.timeline-item.right::before {
-    left: -5px;
-}
-
-/* Tick List */
-.tick-list li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 8px;
-}
-
-.tick-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #FFD700;
-}
-
-/* Slider */
-.slider {
-    position: relative;
-    overflow: hidden;
-}
-
-.slider-container {
-    display: flex;
-    transition: transform 0.5s ease;
-    width: 100%;
-}
-
-.slider-item {
-    display: flex;
-    gap: 10px;
-    flex: 0 0 100%;
-}
-
-.card {
-    flex: 1;
-    min-width: 150px;
-    max-width: 200px;
-}
-
 @media (max-width: 640px) {
-    .slider-item {
-        gap: 5px;
+    .timeline::before {
+        left: 20px;
     }
-    .card {
-        min-width: 120px;
-        max-width: 150px;
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        text-align: left !important;
+        padding-left: 40px;
     }
 }
 
-/* Promo Slider */
-.promo-slider {
+/* Form Elements */
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+::placeholder {
+    color: #a0aec0;
+    opacity: 1;
+}
+
+.error {
+    color: #b91c1c;
+}
+
+/* Ensure buttons are clickable */
+.register-now-btn, .calculate-loan-btn {
     position: relative;
-    overflow: hidden;
+    z-index: 10;
 }
 
-.promo-slider-container {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-.promo-slider-item {
-    flex: 0 0 100%;
+/* Register Form */
+.register-step {
     display: none;
 }
 
-/* Map */
-.map-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
+.register-step:not(.hidden) {
+    display: block;
 }
 
-.map-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.notification {
+    margin-bottom: 10px;
 }
 
-/* Contract Section Styling */
-.contract-container {
-    background: #f8f8f8;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    max-width: 600px;
-    margin: 0 auto;
-    font-family: 'Times New Roman', serif;
+/* Loan Calculator Modal */
+#loan-calculator-modal.hidden {
+    display: none;
 }
 
-.contract-header {
-    background: #e6f0ff;
-    border-bottom: 2px solid #1E3A8A;
-}
-
-.contract-header .logo {
-    height: 28px;
-    background: transparent;
-}
-
-.contract-header h3 {
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
+/* Contract Carousel */
 .contract-carousel {
     position: relative;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAAXNSR0IArs4c6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABzSURBVHjaYvz//z8DIyMjExAQEPD//z8YGBiY////MzMz//v3rwcGBob37x8gIAT//v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx8fH//v7+/v7+/v//f/j//x8gICAgICAg8P//f4CAgID//v//AwMDw/Hx8fHx
+}
+
+.contract-page {
+    display: none;
+}
+
+.contract-page:not(.hidden) {
+    display: block;
+}
+
+.contract-nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Signature Area */
+.signature-area {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Footer */
+footer {
+    background-color: #1e3a8a;
+}
+
+.tick-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+
+.tick-list li:before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: #1d4ed8;
+}
