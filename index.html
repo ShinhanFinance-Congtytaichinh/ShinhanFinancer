@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -57,6 +56,11 @@
         /* Error message color */
         .error {
             color: #b91c1c;
+        }
+        /* Ensure buttons are clickable */
+        .register-now-btn, .calculate-loan-btn {
+            position: relative;
+            z-index: 10;
         }
     </style>
     <script>
@@ -518,7 +522,7 @@
                         <label for="interestRateStep1" class="block text-gray-700 font-medium mb-1 text-[10px] sm:text-sm">Lãi suất (trước 11,5%/năm)</label>
                         <input type="text" id="interestRateStep1" class="w-full p-2 border border-gray-300 rounded-md text-[10px] sm:text-sm" value="Trước 11,5%/năm" readonly>
                     </div>
-                    <button type="button" onclick="nextStep(1)" class="w-full btn-primary" aria-label="Đăng ký ngay">Đăng ký ngay</button>
+                    <button type="submit" class="w-full btn-primary" aria-label="Đăng ký ngay">Đăng ký ngay</button>
                 </form>
                 <button onclick="showHome()" class="w-full mt-2 btn-secondary" aria-label="Gửi">Gửi</button>
             </div>
@@ -543,6 +547,20 @@
                         <label for="email" class="block text-gray-700 font-medium mb-1 text-[10px] sm:text-sm">Địa chỉ email</label>
                         <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded-md text-[10px] sm:text-sm" placeholder="Nhập email" required>
                         <div id="email-error" class="error text-[10px] sm:text-sm mt-1"></div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="idNumber" class="block text-gray-700 font-medium mb-1 text-[10px] sm:text-sm">Số CCCD/CMND</label>
+                        <input type="text" id="idNumber" class="w-full p-2 border border-gray-300 rounded-md text-[10px] sm:text-sm" placeholder="Nhập số CCCD/CMND" required>
+                        <div id="idNumber-error" class="error text-[10px] sm:text-sm mt-1"></div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="loanType" class="block text-gray-700 font-medium mb-1 text-[10px] sm:text-sm">Loại vay</label>
+                        <select id="loanType" class="w-full p-2 border border-gray-300 rounded-md text-[10px] sm:text-sm" required>
+                            <option value="">Chọn loại vay</option>
+                            <option value="Vay tiêu dùng">Vay tiêu dùng</option>
+                            <option value="Vay mua xe">Vay mua xe</option>
+                        </select>
+                        <div id="loanType-error" class="error text-[10px] sm:text-sm mt-1"></div>
                     </div>
                     <div class="mb-2">
                         <label for="address" class="block text-gray-700 font-medium mb-1 text-[10px] sm:text-sm">Địa chỉ liên hệ</label>
@@ -621,7 +639,7 @@
                         </div>
                         <div id="cccdBack-error" class="error text-[10px] sm:text-sm mt-1"></div>
                     </div>
-                    <button type="button" onclick="nextStep(4)" class="w-full btn-primary" aria-label="Tiếp tục">Tiếp tục</button>
+                    <button type="submit" class="w-full btn-primary" aria-label="Tiếp tục">Tiếp tục</button>
                     <div class="flex space-x-2 mt-2 justify-center">
                         <button type="button" onclick="prevStep(4)" class="w-1/2 btn-secondary" aria-label="Quay lại">Quay lại</button>
                         <button type="button" onclick="showHome()" class="w-1/2 btn-secondary" aria-label="Hủy">Hủy</button>
@@ -696,96 +714,92 @@
                         <option value="">Chọn loại vay</option>
                         <option value="Vay tiêu dùng">Vay tiêu dùng</option>
                         <option value="Vay mua xe">Vay mua xe</option>
-                    <select id="calcLoanType" class="w-full p-2 border border-gray-300 rounded-md text-[10px] sm:text-sm" required>
-    <option value="">Chọn loại vay</option>
-    <option value="Vay tiêu dùng">Vay tiêu dùng</option>
-    <option value="Vay mua xe">Vay mua xe</option>
-</select>
-<div id="calcLoanType-error" class="error text-[10px] sm:text-sm mt-1"></div>
-</div>
-<div class="mb-2" id="calcResult" style="display: none;">
-    <p class="text-gray-700 text-[10px] sm:text-sm">Lãi suất: <span id="calcInterestRate"></span>%/năm</p>
-    <p class="text-gray-700 text-[10px] sm:text-sm">Thanh toán hàng tháng: <span id="calcMonthlyPayment"></span> VNĐ</p>
-</div>
-<button type="submit" class="w-full btn-calculate bg-yellow-500 hover:bg-yellow-600 text-white" aria-label="Tính khoản vay">Tính khoản vay</button>
-</form>
-<div class="flex space-x-2 mt-2 justify-center">
-    <button type="button" onclick="resetCalculatorForm()" class="w-1/2 btn-secondary" aria-label="Làm mới">Làm mới</button>
-    <button onclick="closeLoanCalculator()" class="w-1/2 btn-secondary" aria-label="Đóng">Đóng</button>
-</div>
-</section>
+                    </select>
+                    <div id="calcLoanType-error" class="error text-[10px] sm:text-sm mt-1"></div>
+                </div>
+                <div class="mb-2" id="calcResult" style="display: none;">
+                    <p class="text-gray-700 text-[10px] sm:text-sm">Lãi suất: <span id="calcInterestRate"></span>%/năm</p>
+                    <p class="text-gray-700 text-[10px] sm:text-sm">Thanh toán hàng tháng: <span id="calcMonthlyPayment"></span> VNĐ</p>
+                </div>
+                <button type="submit" class="w-full btn-calculate bg-yellow-500 hover:bg-yellow-600 text-white" aria-label="Tính khoản vay">Tính khoản vay</button>
+            </form>
+            <div class="flex space-x-2 mt-2 justify-center">
+                <button type="button" onclick="resetCalculatorForm()" class="w-1/2 btn-secondary" aria-label="Làm mới">Làm mới</button>
+                <button onclick="closeLoanCalculator()" class="w-1/2 btn-secondary" aria-label="Đóng">Đóng</button>
+            </div>
+        </section>
 
-<!-- Testimonials -->
-<section class="testimonials container mx-auto py-4">
-    <h2 class="text-base font-bold text-blue-900 text-center mb-3">Đồng hành cùng Shinhan Finance</h2>
-    <div class="slider" data-autoscroll-interval="5000">
-        <div class="slider-container flex">
-            <div class="slider-item flex space-x-4">
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
-                    <p class="text-gray-700 text-[10px] sm:text-sm mb-1">MoMo và Shinhan Finance hợp tác mang giá trị thiết thực.</p>
-                    <img src="assets/images/testimonials/avatar1.jpg" alt="Avatar - Mr. Bùi Nhật Sang" class="avatar-img mx-auto mb-1">
-                    <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Mr. Bùi Nhật Sang</p>
-                    <p class="text-[9px] sm:text-xs italic text-gray-600">MoMo</p>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
-                    <p class="text-gray-700 text-[10px] sm:text-sm mb-1">VNPAY đồng hành cùng Shinhan Finance, chúc mừng 5 năm.</p>
-                    <img src="assets/images/testimonials/avatar2.jpg" alt="Avatar - Ms. Võ Thị Cẩm Nhung" class="avatar-img mx-auto mb-1">
-                    <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Võ Thị Cẩm Nhung</p>
-                    <p class="text-[9px] sm:text-xs italic text-gray-600">VNPAY</p>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
-                    <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Nguyen Kim và Shinhan Finance mang trải nghiệm tài chính minh bạch.</p>
-                    <img src="assets/images/testimonials/avatar3.jpg" alt="Avatar - Ms. Phan Thị Cẩm Tú" class="avatar-img mx-auto mb-1">
-                    <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Phan Thị Cẩm Tú</p>
-                    <p class="text-[9px] sm:text-xs italic text-gray-600">Nguyen Kim</p>
-                </div>
-            </div>
-            <div class="slider-item flex space-x-4">
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
-                    <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Hợp tác với Shinhan Finance mang lại nhiều giá trị thiết thực.</p>
-                    <img src="assets/images/testimonials/avatar4.jpg" alt="Avatar - Ms. Nguyễn Thị Mai" class="avatar-img mx-auto mb-1">
-                    <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Nguyễn Thị Mai</p>
-                    <p class="text-[9px] sm:text-xs italic text-gray-600">ZaloPay</p>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
-                    <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Shinhan Finance là đối tác tài chính đáng tin cậy.</p>
-                    <img src="assets/images/testimonials/avatar5.jpg" alt="Avatar - Mr. Lê Văn Tâm" class="avatar-img mx-auto mb-1">
-                    <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Mr. Lê Văn Tâm</p>
-                    <p class="text-[9px] sm:text-xs italic text-gray-600">VinMart</p>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
-                    <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Shinhan Finance giúp tôi tiếp cận tài chính dễ dàng hơn.</p>
-                    <img src="assets/images/testimonials/avatar6.jpg" alt="Avatar - Ms. Phạm Thị Hồng" class="avatar-img mx-auto mb-1">
-                    <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Phạm Thị Hồng</p>
-                    <p class="text-[9px] sm:text-xs italic text-gray-600">Khách hàng cá nhân</p>
-                </div>
-            </div>
-            <div class="slider-item flex space-x-4">
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
-                    <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Dịch vụ của Shinhan Finance rất chuyên nghiệp.</p>
-                    <img src="assets/images/testimonials/avatar7.jpg" alt="Avatar - Mr. Nguyễn Văn Dũng" class="avatar-img mx-auto mb-1">
-                    <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Mr. Nguyễn Văn Dũng</p>
-                    <p class="text-[9px] sm:text-xs italic text-gray-600">Công ty XYZ</p>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
-                    <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Shinhan Finance hỗ trợ tài chính nhanh chóng, hiệu quả.</p>
-                    <img src="assets/images/testimonials/avatar8.jpg" alt="Avatar - Ms. Trần Thị Lan" class="avatar-img mx-auto mb-1">
-                    <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Trần Thị Lan</p>
-                    <p class="text-[9px] sm:text-xs italic text-gray-600">Grab Việt Nam</p>
-                </div>
-                <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
-                    <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Shinhan Finance là lựa chọn hàng đầu cho tài chính cá nhân.</p>
-                    <img src="assets/images/testimonials/avatar9.jpg" alt="Avatar - Mr. Hoàng Văn Nam" class="avatar-img mx-auto mb-1">
-                    <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Mr. Hoàng Văn Nam</p>
-                    <p class="text-[9px] sm:text-xs italic text-gray-600">Khách hàng cá nhân</p>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-center mt-2">
-            <button class="text-sm text-blue-900 mx-2" data-slider-prev aria-label="Testimonial trước" tabindex="0">⟵</button>
-            <button class="text-sm text-blue-900 mx-2" data-slider-next aria-label="Testimonial sau" tabindex="0">⟶</button>
-        </div>
+        <!-- Testimonials -->
+        <section class="testimonials container mx-auto py-4">
+            <h2 class="text-base font-bold text-blue-900 text-center mb-3">Đồng hành cùng Shinhan Finance</h2>
+            <div class="slider" data-autoscroll-interval="5000">
+                <div class="slider-container flex">
+                    <div class="slider-item flex space-x-4">
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
+                            <p class="text-gray-700 text-[10px] sm:text-sm mb-1">MoMo và Shinhan Finance hợp tác mang giá trị thiết thực.</p>
+                            <img src="assets/images/testimonials/avatar1.jpg" alt="Avatar - Mr. Bùi Nhật Sang" class="avatar-img mx-auto mb-1">
+                            <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Mr. Bùi Nhật Sang</p>
+                            <p class="text-[9px] sm:text-xs italic text-gray-600">MoMo</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
+                            <p class="text-gray-700 text-[10px] sm:text-sm mb-1">VNPAY đồng hành cùng Shinhan Finance, chúc mừng 5 năm.</p>
+                            <img src="assets/images/testimonials/avatar2.jpg" alt="Avatar - Ms. Võ Thị Cẩm Nhung" class="avatar-img mx-auto mb-1">
+                            <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Võ Thị Cẩm Nhung</p>
+                            <p class="text-[9px] sm:text-xs italic text-gray-600">VNPAY</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
+                            <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Nguyen Kim và Shinhan Finance mang trải nghiệm tài chính minh bạch.</p>
+                            <img src="assets/images/testimonials/avatar3.jpg" alt="Avatar - Ms. Phan Thị Cẩm Tú" class="avatar-img mx-auto mb-1">
+                            <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Phan Thị Cẩm Tú</p>
+                            <p class="text-[9px] sm:text-xs italic text-gray-600">Nguyen Kim</p>
+                        </div>
+                    </div>
+                    <div class="slider-item flex space-x-4">
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
+                            <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Hợp tác với Shinhan Finance mang lại nhiều giá trị thiết thực.</p>
+                            <img src="assets/images/testimonials/avatar4.jpg" alt="Avatar - Ms. Nguyễn Thị Mai" class="avatar-img mx-auto mb-1">
+                            <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Nguyễn Thị Mai</p>
+                            <p class="text-[9px] sm:text-xs italic text-gray-600">ZaloPay</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
+                            <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Shinhan Finance là đối tác tài chính đáng tin cậy.</p>
+                            <img src="assets/images/testimonials/avatar5.jpg" alt="Avatar - Mr. Lê Văn Tâm" class="avatar-img mx-auto mb-1">
+                            <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Mr. Lê Văn Tâm</p>
+                            <p class="text-[9px] sm:text-xs italic text-gray-600">VinMart</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
+                            <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Shinhan Finance giúp tôi tiếp cận tài chính dễ dàng hơn.</p>
+                            <img src="assets/images/testimonials/avatar6.jpg" alt="Avatar - Ms. Phạm Thị Hồng" class="avatar-img mx-auto mb-1">
+                            <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Phạm Thị Hồng</p>
+                            <p class="text-[9px] sm:text-xs italic text-gray-600">Khách hàng cá nhân</p>
+                        </div>
+                    </div>
+                    <div class="slider-item flex space-x-4">
+    <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
+        <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Dịch vụ của Shinhan Finance rất chuyên nghiệp.</p>
+        <img src="assets/images/testimonials/avatar7.jpg" alt="Avatar - Mr. Nguyễn Văn Dũng" class="avatar-img mx-auto mb-1">
+        <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Mr. Nguyễn Văn Dũng</p>
+        <p class="text-[9px] sm:text-xs italic text-gray-600">Công ty XYZ</p>
     </div>
+    <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
+        <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Shinhan Finance hỗ trợ tài chính nhanh chóng, hiệu quả.</p>
+        <img src="assets/images/testimonials/avatar8.jpg" alt="Avatar - Ms. Trần Thị Lan" class="avatar-img mx-auto mb-1">
+        <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Ms. Trần Thị Lan</p>
+        <p class="text-[9px] sm:text-xs italic text-gray-600">Grab Việt Nam</p>
+    </div>
+    <div class="bg-white p-3 rounded-lg shadow-md text-center card min-w-[200px]">
+        <p class="text-gray-700 text-[10px] sm:text-sm mb-1">Shinhan Finance là lựa chọn hàng đầu cho tài chính cá nhân.</p>
+        <img src="assets/images/testimonials/avatar9.jpg" alt="Avatar - Mr. Hoàng Văn Nam" class="avatar-img mx-auto mb-1">
+        <p class="font-bold text-blue-900 text-[10px] sm:text-sm">Mr. Hoàng Văn Nam</p>
+        <p class="text-[9px] sm:text-xs italic text-gray-600">Khách hàng cá nhân</p>
+    </div>
+</div>
+</div>
+<div class="flex justify-center mt-2">
+    <button class="text-sm text-blue-900 mx-2" data-slider-prev aria-label="Testimonial trước" tabindex="0">⟵</button>
+    <button class="text-sm text-blue-900 mx-2" data-slider-next aria-label="Testimonial sau" tabindex="0">⟶</button>
+</div>
+</div>
 </section>
 
 <!-- Awards -->
